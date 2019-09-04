@@ -9,33 +9,33 @@ class Monster {
     this.domElement = null;
     this.points = null;
   }
-  createMonster(){
+  createMonster() {
     this.domElement = $('<div>').text(this.points)
   }
-  addToMonster(card){
-    switch(card.type){
+  addToMonster(card) {
+    switch (card.type) {
       case 'body':
-        if(this.body === null){
+        if (this.body === null) {
           this.body = card;
         }
         break;
       case 'leftArm':
-        if (this.leftArm === null){
-        this.leftArm = card;
+        if (this.leftArm === null) {
+          this.leftArm = card;
         }
         break;
       case 'rightArm':
-        if (this.rightArm === null){
-        this.rightArm = card;
+        if (this.rightArm === null) {
+          this.rightArm = card;
         }
         break;
       case 'legs':
-        if (this.legs === null){
-        this.legs = card;
+        if (this.legs === null) {
+          this.legs = card;
         }
     }
   }
-  addMonstertoGameBoard(){
+  addMonstertoGameBoard() {
     $('#playersDisplay').append(this.domElement);
   }
 }
