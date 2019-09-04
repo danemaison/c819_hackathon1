@@ -8,5 +8,5 @@ class Deck{
   //deckPoints?
   //reorder?
   //playerOwner?
-
   }
+}
