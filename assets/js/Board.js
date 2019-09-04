@@ -10,9 +10,9 @@ class Board{
     this.draw  = this.draw.bind(this)
   }
   generateDom(){
-    var drawDOM = $('<div>').addClass('cardImgBack draw').css("height", "100%");
+    var drawDOM = $('<div>').addClass('draw').css("height", "100%");
     drawDOM.click(this.draw);
-    var discardDOM = $("<div>").addClass("cardImgBack discard");
+    var discardDOM = $("<div>").addClass("discard");
     // var discardDOM =
     $('#drawPile').append(drawDOM);
     $("#discardPile").append(discardDOM);

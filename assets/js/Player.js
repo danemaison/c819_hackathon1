@@ -6,7 +6,7 @@ class Player{
     this.parent = parent;
   }
   addMonster(monsterObj){
-    this.army.push(new Monster(this));
+    this.army.push(monsterObj);
   }
   render(){
     $('#playerHand').empty();
@@ -18,9 +18,10 @@ class Player{
     // console.log(this.deck);
   }
   renderMonster(){
+    $('.player' + (this.parent.currentPlayer + 1)).empty();
     for(var i = 0; i < this.army.length; i++){
       var monsterDOM = $('<div>').addClass('monster').text(this.army[i].points);
-      $('#playersDisplay').append(monsterDOM)
+      $('.player' + (this.parent.currentPlayer+1) ).append(monsterDOM)
     }
   }
 }
