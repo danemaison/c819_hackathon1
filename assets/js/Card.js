@@ -22,6 +22,9 @@ class Card{
   }
 
   clickHandler(){
-    return this;
+    if(!this.deck.parent.currentCard){
+      this.deck.parent.currentCard = this;
+    }
+
   }
 }
