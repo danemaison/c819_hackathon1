@@ -22,7 +22,7 @@ class Board{
     babyDOM.click(this.provoke);
     $('#babyDecksDisplay').append(babyDOM);
     }
-  }
+
   draw(){
     var cardDrawn = this.drawDeck.draw();
     cardDrawn.parent = this.players[this.currentPlayer];
@@ -34,14 +34,15 @@ class Board{
   provoke(){
     // so click handler added to the babiesDom element. compare baby element points with
     // player Monsters.
-    var playersWon = [];
     var babyArmyPoints = this.babiesDeck.calcPoints();
     for (var player of this.players){
       if(player.calcArmyPoints() > babyArmyPoints){
         player.points += babyArmyPoints;
       }
+      console.log(babyArmyPoints, player.points)
       player.army = [];
     }
+    console.log(this)
     // so players fought and winners get baby points
     // both players lose their monsters
 

@@ -18,6 +18,7 @@ class Card{
     .css("background-image", "url(" + this.image + ")")
     .click(this.clickHandler);
     // console.log(domElement);
+    this.domElement = domElement;
     return domElement;
   }
 
