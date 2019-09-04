@@ -1,6 +1,6 @@
 class Deck{
   constructor(cardsArray, visible, placeCardsInDeck, draw){
-    this.cardsArray = [];
+    this.cardsArragit statusy = [];
     this.visible = true;
     this.placeCardsInDeck = {};
 
