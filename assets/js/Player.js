@@ -1,6 +1,6 @@
 class Player{
   constructor(){
-    this.deck = new Deck();
+    this.deck = new Deck(this);
     this.army = [];
     this.points = 0;
   }
@@ -8,8 +8,8 @@ class Player{
     this.army.push(monsterObj);
   }
   render(){
-    for(var i = 0; i < this.deck.length; i++){
-      ('#playerHand').append(this.deck[i].domElement);
+    for(var i = 0; i < this.deck.cardsArray.length; i++){
+      $('#playerHand').append(this.deck.cardsArray[i].domElement);
     }
   }
 }

@@ -6,12 +6,13 @@ class Card{
     this.text = text;
     this.image = image;
     // this.element = red/blue/green;
-    this.domElement = this.createDomElement();
     this.clickHandler = this.clickHandler.bind(this);
+    this.domElement = this.createDomElement();
   }
 
   // creates card html element for rendering
   createDomElement() {
+    console.log('creating dom element');
     var domElement = $("<div>")
     .addClass("card")
     .text(this.text)
@@ -22,6 +23,7 @@ class Card{
   }
 
   clickHandler(){
+    console.log('this:', this.deck);
     if(this.type === 'head'){
       this.deck.parent.addMonster(new Monster(this));
     }
