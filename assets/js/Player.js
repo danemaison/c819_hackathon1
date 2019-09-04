@@ -13,7 +13,7 @@ class Player{
     console.log(this.deck.cardsArray);
     // console.log(this)
     for(var i = 0; i < this.deck.cardsArray.length; i++){
-      $('#playerHand').append(this.deck.cardsArray[i].domElement);
+      $('#playerHand').append(this.deck.cardsArray[i].createDomElement());
     }
     // console.log(this.deck);
   }
