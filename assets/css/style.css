@@ -33,6 +33,19 @@ html, body {
   margin: auto;
 }
 
+.playerOne {
+  height: 50%;
+  width: 100%;
+  display: flex;
+  border-bottom-style: dotted;
+}
+
+.playerTwo {
+  height: 50%;
+  width: 100%;
+  display: flex;
+}
+
 #drawDiscard {
   height: 75%;
   width: 20%;
@@ -48,6 +61,12 @@ html, body {
   height: 35%;
   margin: auto;
   border: 1px solid black;
+}
+
+.cardImgBack {
+  background-image: url("../images/backimage.png");
+  width: 123px;
+  height: 170px;
 }
 
 #playerAndHandPoints{
@@ -75,10 +94,4 @@ html, body {
   width: 20%;
   height: 100%;
   border: 1px solid pink;
-}
-
-.cardImgBack {
-  background-image: url("../images/backcardimage.jpg");
-  height: 100%;
-  width: 100%;
 }
