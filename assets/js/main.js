@@ -18,12 +18,13 @@ function initializeApp(){
   }
   // randomize deck
   // gameBoard.drawDeck.shuffle();
-  gameBoard.drawDeck.shuffle();
+  gameBoard.drawDeck.shuffle()
 
   // for each player in the game, pass five cards out.
   for (var player of gameBoard.players){
     for (var i = 0; i < 5; i++){
-      player.deck.placeInDeck(gameBoard.drawDeck.draw());
+      var handout = gameBoard.drawDeck.draw()
+      player.deck.placeInDeck(handout);
     }
   }
 
