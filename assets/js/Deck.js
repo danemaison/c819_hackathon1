@@ -9,6 +9,11 @@ class Deck{
   }
   draw(){
     var lastCard = this.cardsArray.pop();
+    if (lastCard.type === "baby"){
+      this.parent.babiesDeck.placeInDeck(lastCard);
+      return;
+    }
+    lastCard.deck = this.parent.players[this.parent.currentPlayer].deck;
     return lastCard;
   }
   shuffle(){
@@ -19,4 +24,6 @@ class Deck{
       this.cardsArray[randomIndex] = temp;
     }
   }
+
+
 }

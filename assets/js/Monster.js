@@ -11,7 +11,9 @@ class Monster {
     this.points = null;
   }
   createMonster() {
-    this.domElement = $('<div>').text(this.points)
+    this.domElement = $('<div>').text(this.points + " head");
+    this.player.parent.actionsLeft--;
+    this.render();
   }
   addToMonster(card) {
     switch (card.type) {
@@ -36,7 +38,7 @@ class Monster {
         }
     }
   }
-  addMonstertoGameBoard() {
+  render() {
     $('#playersDisplay').append(this.domElement);
   }
 }

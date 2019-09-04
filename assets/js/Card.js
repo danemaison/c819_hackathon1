@@ -24,7 +24,8 @@ class Card{
 
   clickHandler(){
     if(this.type === 'head'){
-      this.deck.parent.addMonster(new Monster(this));
+      console.log(this)
+      this.deck.parent.addMonster(new Monster(this, this.deck.parent));
     }
     if(!this.deck.parent.currentCard){
       this.deck.parent.currentCard = this;
