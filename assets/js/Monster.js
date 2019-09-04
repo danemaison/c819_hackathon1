@@ -23,25 +23,42 @@ class Monster {
         if (this.body === null) {
           this.body = card;
           this.points += card.points;
+          return true;
+        }
+        else {
+          return false;
         }
         break;
       case 'leftArm':
         if (this.leftArm === null) {
           this.leftArm = card;
           this.points += card.points;
+          return true;
+        }
+        else {
+          return false;
         }
         break;
       case 'rightArm':
         if (this.rightArm === null) {
           this.rightArm = card;
           this.points += card.points;
+          return true;
+        }
+        else {
+          return false;
         }
         break;
       case 'legs':
         if (this.legs === null) {
           this.legs = card;
           this.points += card.points;
+          return true;
         }
+        else{
+          return false;
+        }
+        break;
     }
   }
   render() {

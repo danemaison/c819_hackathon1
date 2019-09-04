@@ -33,11 +33,31 @@ class Card{
           console.log("card found");
         }
       }
+      this.deck.parent.parent.actionsLeft--;
       this.deck.parent.render();
       this.deck.parent.renderMonster();
     }
-    if(!this.deck.parent.parent.currentCard){
-      this.deck.parent.parent.currentCard = this;
+    // if(!this.deck.parent.parent.currentCard){
+    //   this.deck.parent.parent.currentCard = this;
+    // }
+    else{
+      // so if its not a head then it is a body part that they want to add
+      for(var monster of this.deck.parent.army){
+        if (monster.addToMonster(this)){
+          for (var i = 0; i < this.deck.cardsArray.length; i++) {
+            if (this === this.deck.cardsArray[i]) {
+              this.deck.cardsArray.splice(i, 1);
+              console.log("card found");
+            }
+          }
+          this.deck.parent.render();
+          this.deck.parent.renderMonster();
+          this.deck.parent.parent.actionsLeft--;
+          return true;
+        }
+      }
     }
   }
+
+  // nonHeadHandler
 }
