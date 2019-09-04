@@ -95,6 +95,9 @@ text-align: center;
 }
 
 .card {
+  background-position: center;
+  background-size:cover;
+  background-repeat: no-repeat;
   height: 80%;
   width: 10%;
   margin: auto;
