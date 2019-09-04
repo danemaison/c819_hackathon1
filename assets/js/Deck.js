@@ -11,7 +11,7 @@ class Deck{
     var lastCard = this.cardsArray.pop();
     if (lastCard.type === "baby"){
       this.parent.babiesDeck.placeInDeck(lastCard);
-      return;
+      return this.draw();
     }
     lastCard.deck = this.parent.players[this.parent.currentPlayer].deck;
     return lastCard;
