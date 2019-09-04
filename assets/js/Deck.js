@@ -25,6 +25,13 @@ class Deck{
     this.cardsArray = newArray.flat();
     console.log(this.cardsArray);
 }
+  calcPoints(){
+    var pointTotal = 0;
+    for (var i of this.cardsArray){
+      pointTotal += i.points
+    }
+    return pointTotal;
+  }
 
 
 }
