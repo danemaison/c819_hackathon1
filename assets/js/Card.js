@@ -25,6 +25,7 @@ class Card{
     if(this.type === 'head'){
       // console.log(this)
       this.deck.parent.addMonster(new Monster(this, this.deck.parent));
+      this.deck.parent.renderMonster();
     }
     if(!this.deck.parent.currentCard){
       this.deck.parent.currentCard = this;
