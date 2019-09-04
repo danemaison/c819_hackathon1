@@ -8,6 +8,8 @@ class Monster {
     this.legs = null;
     this.player = player;
     this.domElement = null;
+    debugger;
+    console.log('headcard points:', headCard.points)
     this.points = headCard.points;
   }
   createMonster() {

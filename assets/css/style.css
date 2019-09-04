@@ -33,14 +33,14 @@ html, body {
   margin: auto;
 }
 
-.playerOne {
+.player1 {
   height: 50%;
   width: 100%;
   display: flex;
   border-bottom-style: dotted;
 }
 
-.playerTwo {
+.player2 {
   height: 50%;
   width: 100%;
   display: flex;
@@ -56,17 +56,13 @@ html, body {
   justify-content: space-evenly;
 }
 
-#drawDiscard .deck {
-  width: 65%;
-  height: 35%;
-  margin: auto;
-  border: 1px solid black;
-}
-
 .cardImgBack {
+  margin:5px;
   background-image: url("../images/backimage.png");
-  width: 123px;
-  height: 170px;
+  background-repeat: no-repeat;
+  width:100%;
+  height:100%;
+  background-size:contain;
 }
 
 #playerAndHandPoints{

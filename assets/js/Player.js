@@ -20,7 +20,7 @@ class Player{
   renderMonster(){
     for(var i = 0; i < this.army.length; i++){
       var monsterDOM = $('<div>').addClass('monster').text(this.army[i].points);
-      $('#playersDisplay').append(monsterDOM)
+      $(`player${this.parent.currentPlayer}`).append(monsterDOM)
     }
   }
 }
