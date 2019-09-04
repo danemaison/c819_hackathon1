@@ -11,19 +11,20 @@ class Deck{
     var lastCard = this.cardsArray.pop();
     if (lastCard.type === "baby"){
       this.parent.babiesDeck.placeInDeck(lastCard);
-      return;
+      return this.draw();
     }
     lastCard.deck = this.parent.players[this.parent.currentPlayer].deck;
     return lastCard;
   }
-  shuffle(){
-    for(var currentIndex = this.cardsArray.length - 1; currentIndex > 0; currentIndex--){
-      var randomIndex = Math.floor(Math.random() * currentIndex);
-      var temp = this.cardsArray[currentIndex];
-      this.cardsArray[currentIndex] = this.cardsArray[randomIndex];
-      this.cardsArray[randomIndex] = temp;
+  shuffle() {
+    var newArray = [];
+    while (this.cardsArray.length > 0) {
+      var index = Math.floor(Math.random() * this.cardsArray.length);
+      newArray.push(this.cardsArray.splice(index, 1));
     }
-  }
+    this.cardsArray = newArray.flat();
+    console.log(this.cardsArray);
+}
 
 
 }
