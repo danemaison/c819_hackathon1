@@ -3,7 +3,7 @@ class Card{
     this.deck = null; // deck parent...constructor?
     this.type = type;
     this.points = null;
-    this.text = cardText;
+    this.text = text;
     this.image = image;
     // this.element = red/blue/green;
     this.domElement = this.createDomElement();
