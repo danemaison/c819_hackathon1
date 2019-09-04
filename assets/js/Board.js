@@ -5,50 +5,24 @@ class Board{
     this.babiesDeck = new Deck(this);
     this.currentPlayer = 0;
     this.actionsLeft = 4;
-    this.players = [new Player(), new Player()];
+    this.players = [new Player(this), new Player(this)];
     this.cardQueue = null;
+    this.draw  = this.draw.bind(this)
   }
   generateDom(){
-    // var discardDOM = $('<div>').class('cardBack');
-    // discardDOM.click(this.discard);
-    // $('#discardPile').append(discardDOM);
-
-    var drawDOM = $('<div>').class('cardBack');
+    var drawDOM = $('<div>').addClass('cardImgBack draw').css("height", "100%");
     drawDOM.click(this.draw);
+    var discardDOM = $("<div>").addClass("cardImgBack discard");
+    // var discardDOM =
     $('#drawPile').append(drawDOM);
-  }
-  discard(){
-//
+    $("#discardPile").append(discardDOM);
   }
   draw(){
     var cardDrawn = this.drawDeck.draw();
+    cardDrawn.parent = this.players[this.currentPlayer];
     this.players[this.currentPlayer].deck.placeInDeck(cardDrawn);
     this.actionsLeft--;
     this.players[this.currentPlayer].render();
-  }
-
-  takeTurn(){
-      this.player[this.currentPlayer].render();
-      if(this.actionsLeft){
-        this.player[this.currentPlayer].takeTurn();
-      }
-      else{
-        if(this.player[this.currentPlayer + 1] === undefined){
-          this.currentPlayer = 0;
-        }
-        else{
-          this.currentPlayer++;
-        }
-        this.actionsLeft = 4;
-      }
-  }
-  gameOver(){
-    if(this.drawDeck.cardsArray.length){
-      return false;
     }
-    else{
-      return true;
-    }
-  }
 
 }

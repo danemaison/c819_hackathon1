@@ -26,10 +26,12 @@ function initializeApp(){
     }
   }
 
-  gameBoard.startGame(); // go to player one, set actions remaining to 3
-  while(!gameBoard.gameOver()){
-    gameBoard.takeTurn();
-  }
+  // gameBoard.startGame(); // go to player one, set actions remaining to 3
+  gameBoard.generateDom();
+  gameBoard.players[0].render();
+  // while(!gameBoard.gameOver()){
+  //   gameBoard.takeTurn();
+  // }
   // begin the game...board ne
   console.log(gameBoard);
   // console.log(player)
