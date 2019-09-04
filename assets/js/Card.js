@@ -12,7 +12,6 @@ class Card{
 
   // creates card html element for rendering
   createDomElement() {
-    // console.log('creating dom element');
     var domElement = $("<div>")
     .addClass("card")
     .text(this.text)
@@ -26,6 +25,7 @@ class Card{
     if(this.type === 'head'){
       // console.log(this)
       this.deck.parent.addMonster(new Monster(this, this.deck.parent));
+      this.deck.parent.renderMonster();
     }
     if(!this.deck.parent.currentCard){
       this.deck.parent.currentCard = this;

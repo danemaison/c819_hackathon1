@@ -10,10 +10,17 @@ class Player{
   }
   render(){
     $('#playerHand').empty();
+    console.log(this.deck.cardsArray);
     // console.log(this)
     for(var i = 0; i < this.deck.cardsArray.length; i++){
       $('#playerHand').append(this.deck.cardsArray[i].domElement);
     }
     // console.log(this.deck);
+  }
+  renderMonster(){
+    for(var i = 0; i < this.army.length; i++){
+      var monsterDOM = $('<div>').addClass('monster').text(this.army[i].points);
+      $('#playersDisplay').append(monsterDOM)
+    }
   }
 }
