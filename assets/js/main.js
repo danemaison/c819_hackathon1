@@ -17,6 +17,7 @@ function initializeApp(){
     gameBoard.drawDeck.placeInDeck(tempBody);
   }
   // randomize deck
+  // gameBoard.drawDeck.shuffle();
   gameBoard.drawDeck.shuffle();
 
   // for each player in the game, pass five cards out.
