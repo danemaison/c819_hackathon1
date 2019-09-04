@@ -9,6 +9,7 @@ class Monster {
     this.player = player;
     this.domElement = null;
     this.points = headCard.points;
+    this.deck = new Deck(this);
   }
   createMonster() {
     this.domElement = $('<div>').text(this.points + " head");
