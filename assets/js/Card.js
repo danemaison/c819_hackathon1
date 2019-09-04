@@ -2,7 +2,7 @@ class Card{
   constructor(deck, type, points, text, image){
     this.deck = deck; // deck parent...constructor?
     this.type = type;
-    this.points = null;
+    this.points = points;
     this.text = text;
     this.image = image;
     // this.element = red/blue/green;
@@ -12,7 +12,7 @@ class Card{
 
   // creates card html element for rendering
   createDomElement() {
-    console.log('creating dom element');
+    // console.log('creating dom element');
     var domElement = $("<div>")
     .addClass("card")
     .text(this.text)
@@ -24,7 +24,7 @@ class Card{
 
   clickHandler(){
     if(this.type === 'head'){
-      console.log(this)
+      // console.log(this)
       this.deck.parent.addMonster(new Monster(this, this.deck.parent));
     }
     if(!this.deck.parent.currentCard){
