@@ -7,6 +7,7 @@ class Player{
   }
   addMonster(monsterObj){
     this.army.push(monsterObj);
+    // this.parent.actionsLeft--;
   }
   render(){
     $('#playerHand').empty();
