@@ -22,7 +22,7 @@ class Board{
     babyDOM.click(this.provoke);
     $('#babyDecksDisplay').append(babyDOM);
     }
-  }
+
   draw(){
     var cardDrawn = this.drawDeck.draw();
     cardDrawn.parent = this.players[this.currentPlayer];

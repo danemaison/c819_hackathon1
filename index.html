@@ -2,45 +2,54 @@
 <html>
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Chilanka&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="assets/js/Board.js"></script>
     <script src="assets/js/Card.js"></script>
     <script src="assets/js/Player.js"></script>
     <script src="assets/js/Monster.js"></script>
     <script src="assets/js/Deck.js"></script>
+
   </head>
   <body>
-    <main id="gameDisplayContainer">
-      <div id="babyDecksDisplay">baby deck(s) go here</div>
-      <!-- Beginning of player and draw, discard areas-->
-      <div id="playersAndDrawPiles">
-        <div id="playersDisplay">
-          <div class="player1">Player One
-            <div class="rightArm">
+
+    <div class="flex-container">
+      <h1>BEARS VS. BABIES!</h1>
+      <main class="gameDisplayContainer">
+        <div id="babyDecksDisplay"><!--- baby decks go here --></div>
+        <!-- Beginning of player and draw, discard areas-->
+        <div id="playersAndDrawPiles">
+          <div id="playersDisplay">
+            <div class="player1Container">
+              <h3>Player One</h3>
+              <div class="player1"></div>
             </div>
-            <div class="body">
-            </div>
-            <div class="leftArm">
-            </div>
-            <div class="legs">
+            <div class="player2Container">
+              <h3>Player Two</h3>
+              <div class="player2"></div>
             </div>
           </div>
-          <div class="player2">Player Two
+          <div id="drawDiscard">
+            <div class="discard">
+              <h3>Discard</h3>
+              <div id="discardPile" class="cardImgBack"></div>
+            </div>
+            <div class="draw">
+              <h3>Draw</h3>
+              <div id="drawPile" class="cardImgBack"></div>
+            </div>
+
           </div>
         </div>
-        <div id="drawDiscard">
-          <div id="discardPile" class="cardImgBack">discard</div>
-          <div id="drawPile" class="cardImgBack" class="deck">draw</div>
+        <!--End of player and draw, discard piles-->
+        <!--Begin player hand and baby points area-->
+        <div id="playerAndHandPoints">
+          <div id="playerHand"></div>
+          <div id="playerBabies"></div>
         </div>
-      </div>
-      <!--End of player and draw, discard piles-->
-      <!--Begin player hand and baby points area-->
-      <div id="playerAndHandPoints">
-        <div id="playerHand"></div>
-        <div id="playerBabies"></div>
-      </div>
-      <!--End of player hand and baby points area-->
-    </main>
+        <!--End of player hand and baby points area-->
+      </main>
+    </div>
     <!--End of game display area-->
   </body>
   <script src="assets/js/main.js"></script>
