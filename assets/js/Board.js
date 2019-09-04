@@ -8,6 +8,7 @@ class Board{
     this.players = [new Player(this), new Player(this)];
     this.cardQueue = null;
     this.draw  = this.draw.bind(this)
+    this.provoke = this.provoke.bind(this)
   }
   generateDom(){
     var drawDOM = $('<div>').addClass('cardImgBack draw').css("height", "100%");
@@ -16,6 +17,11 @@ class Board{
     // var discardDOM =
     $('#drawPile').append(drawDOM);
     $("#discardPile").append(discardDOM);
+
+    var babyDOM = $('<div>').addClass('cardImgBack baby').css("height", "100%");
+    babyDOM.click(this.provoke);
+    $('#babyDecksDisplay').append(babyDOM);
+    }
   }
   draw(){
     var cardDrawn = this.drawDeck.draw();
