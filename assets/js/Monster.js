@@ -8,7 +8,7 @@ class Monster {
     this.legs = null;
     this.player = player;
     this.domElement = null;
-    this.points = null;
+    this.points = headCard.points;
   }
   createMonster() {
     this.domElement = $('<div>').text(this.points + " head");
@@ -20,21 +20,25 @@ class Monster {
       case 'body':
         if (this.body === null) {
           this.body = card;
+          this.points += card.points;
         }
         break;
       case 'leftArm':
         if (this.leftArm === null) {
           this.leftArm = card;
+          this.points += card.points;
         }
         break;
       case 'rightArm':
         if (this.rightArm === null) {
           this.rightArm = card;
+          this.points += card.points;
         }
         break;
       case 'legs':
         if (this.legs === null) {
           this.legs = card;
+          this.points += card.points;
         }
     }
   }
