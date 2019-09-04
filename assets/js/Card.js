@@ -12,7 +12,6 @@ class Card{
 
   // creates card html element for rendering
   createDomElement() {
-    console.log('creating dom element');
     var domElement = $("<div>")
     .addClass("card")
     .text(this.text)
