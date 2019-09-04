@@ -14,7 +14,7 @@ class Card{
   createDomElement() {
     var domElement = $("<div>")
     .addClass("card")
-    .text(this.cardText)
+    .text(this.text)
     .css("background-image", "url(" + this.image + ")")
     .click(this.clickHandler);
     // console.log(domElement);
