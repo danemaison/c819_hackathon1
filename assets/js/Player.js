@@ -24,4 +24,11 @@ class Player{
       $('.player' + (this.parent.currentPlayer+1) ).append(monsterDOM)
     }
   }
+
+  calcArmyPoints(){
+    var tempPoints = 0;
+    for (var monster of this.army){
+      tempPoints += monster.deck.calcPoints();
+    }
+  }
 }

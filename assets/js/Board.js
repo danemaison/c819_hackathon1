@@ -31,4 +31,20 @@ class Board{
     this.players[this.currentPlayer].render();
     }
 
+  provoke(){
+    // so click handler added to the babiesDom element. compare baby element points with
+    // player Monsters.
+    var playersWon = [];
+    var babyArmyPoints = this.babiesDeck.calcPoints();
+    for (var player of this.players){
+      if(player.calcArmyPoints() > babyArmyPoints){
+        player.points += babyArmyPoints;
+      }
+      player.army = [];
+    }
+    // so players fought and winners get baby points
+    // both players lose their monsters
+
+    //
+  }
 }
