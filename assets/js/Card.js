@@ -22,14 +22,21 @@ class Card{
   }
 
   clickHandler(){
-    // console.log(this);
+    console.log(this);
     if(this.type === 'head'){
       // console.log(this)
       this.deck.parent.addMonster(new Monster(this, this.deck.parent));
+      for(var i = 0; i < this.deck.cardsArray.length; i++){
+        if(this === this.deck.cardsArray[i]){
+          this.deck.cardsArray.splice(i, 1);
+          console.log("card found");
+        }
+      }
+      this.deck.parent.render();
       this.deck.parent.renderMonster();
     }
-    if(!this.deck.parent.currentCard){
-      this.deck.parent.currentCard = this;
+    if(!this.deck.parent.parent.currentCard){
+      this.deck.parent.parent.currentCard = this;
     }
   }
 }
