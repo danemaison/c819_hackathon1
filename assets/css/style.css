@@ -1,0 +1,58 @@
+html, body {
+  height: 98.7%;
+  width: 99.5%;
+}
+
+#gameDisplayContainer {
+  width: 80vh;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid black; */
+  margin: auto;
+}
+
+#babyDecksDisplay {
+  width: 100%;
+  height: 15%;
+  border: 1px solid red;
+}
+
+#playersAndDrawPiles {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  justify-content: space-evenly;
+  border: 1px solid blue;
+}
+
+#playersDisplay {
+  height: 92.5%;
+  width: 75%;
+  border: 1px solid black;
+  margin: auto;
+}
+
+#drawDiscard {
+  height: 75%;
+  width: 20%;
+  /* border: 1px solid grey; */
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+#drawDiscard .deck {
+  width: 65%;
+  height: 35%;
+  margin: auto;
+  border: 1px solid black;
+}
+
+#playerAndHandPoints{
+  width: 100%;
+  height: 15%;
+  display: flex;
+  border: 1px solid green;
+}
