@@ -1,6 +1,6 @@
 class Card{
-  constructor(type, points, text, image){
-    this.deck = null; // deck parent...constructor?
+  constructor(deck, type, points, text, image){
+    this.deck = deck; // deck parent...constructor?
     this.type = type;
     this.points = null;
     this.text = text;
