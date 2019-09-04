@@ -31,6 +31,7 @@ class Card{
         if(this === this.deck.cardsArray[i]){
           this.deck.cardsArray.splice(i, 1);
           console.log("card found");
+          break;
         }
       }
       this.deck.parent.parent.actionsLeft--;
