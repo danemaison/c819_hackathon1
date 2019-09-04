@@ -1,6 +1,6 @@
 class Card{
-  constructor(type, points, text, image){
-    this.deck = null; // deck parent...constructor?
+  constructor(deck, type, points, text, image){
+    this.deck = deck; // deck parent...constructor?
     this.type = type;
     this.points = null;
     this.text = text;
@@ -22,6 +22,11 @@ class Card{
   }
 
   clickHandler(){
-    return this;
+    if(this.type === 'head'){
+      this.deck.parent.addMonster(new Monster(this));
+    }
+    if(!this.deck.parent.currentCard){
+      this.deck.parent.currentCard = this;
+    }
   }
 }

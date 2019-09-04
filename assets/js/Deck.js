@@ -1,6 +1,7 @@
 class Deck{
-  constructor(){
+  constructor(player){
     this.cardsArray = [];
+    this.parent = player;
     // this.visible = false;
   }
   placeInDeck(cardObj){
