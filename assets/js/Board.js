@@ -5,7 +5,7 @@ class Board{
     this.babiesDeck = new Deck(this);
     this.currentPlayer = 0;
     this.actionsLeft = 4;
-    this.players = [new Player(this, 1), new Player(this, 1)];
+    this.players = [new Player(this, 1), new Player(this, 2)];
     this.cardQueue = null;
     this.draw  = this.draw.bind(this)
     this.provoke = this.provoke.bind(this)
@@ -23,6 +23,14 @@ class Board{
   draw(){
     if(this.drawDeck.cardsArray.length < 2){
       this.winCondition();
+      return;
+    }
+    //
+    var provokeGenerate = Math.floor(Math.random()*15);
+    if (!provokeGenerate){
+      console.log("you just drew a provoke")
+      this.provoke();
+      this.players[this.currentPlayer].render();
       return;
     }
     var cardDrawn = this.drawDeck.draw();
@@ -56,10 +64,19 @@ class Board{
   }
 
   provoke(){
-    console.log('provoke')
-    // so click handler added to the babiesDom element. compare baby element points with
-    // player Monsters.
     var babyArmyPoints = this.babiesDeck.calcPoints();
+    if (!this.babiesDeck.cardsArray.length){
+      return;
+    }
+    var armyCount = 0;
+    for (var players of this.players){
+      armyCount += players.army.length;
+    }
+    if (!armyCount){
+      this.babiesDeck.cardsArray = []
+      return false;
+    }
+
     for (var player of this.players){
       if(player.calcArmyPoints() > babyArmyPoints){
         player.points += babyArmyPoints;
@@ -79,12 +96,6 @@ class Board{
     for(var i = 1; i <= this.players.length; i++){
       $('.player' + i).empty();
     }
-
-    // this.players[this.currentPlayer].renderMonster();
-    // this.players[this.currentPlayer].renderMonster();
-    // console.log(this)
-    // so players fought and winners get baby points
-    // both players lose their monsters
   }
 }
 }
