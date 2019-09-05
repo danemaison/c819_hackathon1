@@ -105,12 +105,12 @@ class Board{
     }
 
     if (winners.length){
-      $("#indicator").removeClass("hidden").text("Players" + winners.join(" and ") + " won the battle");
+      $("#indicator").removeClass("hidden").text("Players " + winners.join(" and ") + " won the battle");
       setTimeout(function () { $("#indicator").addClass("hidden"); }, 1500);
     }
     else {
 
-      $("#indicator").removeClass("hidden").text("Players" + losers.join(" and ") + " lost the battle");
+      $("#indicator").removeClass("hidden").text("Players " + losers.join(" and ") + " lost the battle");
       setTimeout(function () { $("#indicator").addClass("hidden"); }, 1500);
     }
 

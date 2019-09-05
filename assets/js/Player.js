@@ -23,7 +23,7 @@ class Player{
     $('.player' + (this.parent.currentPlayer + 1)).empty();
     for(var i = 0; i < this.army.length; i++){
       var monsterContainer = $('<div>').addClass('monster-container');
-      var monsterPoints = $('<div>').addClass("monster-score").text(this.army[i].deck.calcPoints());
+      var monsterPoints = $('<div>').addClass("monster-score").text("Monster Power: " + this.army[i].deck.calcPoints());
       monsterContainer.append(this.army[i].headElement);
       monsterContainer.append(this.army[i].bodyElement);
       monsterContainer.append(this.army[i].leftArmElement);
@@ -32,6 +32,8 @@ class Player{
       monsterContainer.append(monsterPoints);
       $('.player' + (this.parent.currentPlayer+1) ).append(monsterContainer);
     }
+    $(".row.player-titles > h3:nth-child(1)").text("Player One's Army: " + this.parent.players[0].calcArmyPoints());
+    $(".row.player-titles > h3:nth-child(2)").text("Player Two's Army: " + this.parent.players[1].calcArmyPoints());
   }
 
   createMonsterDomElement(monsterObj){
