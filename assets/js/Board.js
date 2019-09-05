@@ -17,11 +17,8 @@ class Board{
     // var discardDOM =
     $('#drawPile').append(drawDOM);
     $("#discardPile").append(discardDOM);
-
-    var babyDOM = $('<div>').addClass('cardImgBack baby').css("height", "100%");
-    babyDOM.click(this.provoke);
-    $('#babyDecksDisplay').append(babyDOM);
-    }
+    $("#provoke").on('click', this.provoke);
+  }
 
   draw(){
     if(this.drawDeck.cardsArray.length < 2){
@@ -59,6 +56,7 @@ class Board{
   }
 
   provoke(){
+    console.log('provoke')
     // so click handler added to the babiesDom element. compare baby element points with
     // player Monsters.
     var babyArmyPoints = this.babiesDeck.calcPoints();
