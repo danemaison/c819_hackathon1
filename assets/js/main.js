@@ -35,7 +35,6 @@ function initializeApp(){
   //   gameBoard.takeTurn();
   // }
   // begin the game...board ne
-  console.log(gameBoard);
   // console.log(player)
   // player.render();
 }

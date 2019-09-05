@@ -46,7 +46,5 @@ class Board{
     console.log(this)
     // so players fought and winners get baby points
     // both players lose their monsters
-
-    //
   }
 }
