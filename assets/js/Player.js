@@ -23,11 +23,13 @@ class Player{
     $('.player' + (this.parent.currentPlayer + 1)).empty();
     for(var i = 0; i < this.army.length; i++){
       var monsterContainer = $('<div>').addClass('monster-container');
+      var monsterPoints = $('<div>').addClass("monster-score").text(this.army[i].deck.calcPoints());
       monsterContainer.append(this.army[i].headElement);
       monsterContainer.append(this.army[i].bodyElement);
       monsterContainer.append(this.army[i].leftArmElement);
       monsterContainer.append(this.army[i].rightArmElement);
       monsterContainer.append(this.army[i].legsElement);
+      monsterContainer.append(monsterPoints);
       $('.player' + (this.parent.currentPlayer+1) ).append(monsterContainer);
     }
   }
