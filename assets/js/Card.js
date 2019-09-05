@@ -52,6 +52,9 @@ class Card{
         }
       }
     }
+    //need to add Army points to Army display
+    // var currentArmyPoints = this.deck.parent.calcArmyPoints()
+    // $('.player1').text(currentArmyPoints);
     currentPlayer.render();
     currentPlayer.renderMonster();
     console.log('actions left: ', this.deck.parent.parent.actionsLeft);
