@@ -13,6 +13,7 @@ class Deck{
       $("#indicator").removeClass("hidden").text("Baby Army Size + 1");
       setTimeout(function () {$("#indicator").addClass("hidden");}, 300);
       this.parent.babiesDeck.placeInDeck(lastCard);
+      $("#babyCount").text(this.parent.babiesDeck.cardsArray.length)
       return this.draw();
     }
     lastCard.deck = this.parent.players[this.parent.currentPlayer].deck;
