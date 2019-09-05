@@ -26,7 +26,7 @@ class Board{
       return;
     }
     //
-    var provokeGenerate = Math.floor(Math.random()*15);
+    var provokeGenerate = Math.floor(Math.random()*5);
     if (!provokeGenerate){
       console.log("you just drew a provoke")
       this.provoke();
@@ -82,17 +82,19 @@ class Board{
     }
     if (!armyCount){
       this.errorIndicator("The babies found no one to fight");
-      this.babiesDeck.cardsArray = []
+      // this.babiesDeck.cardsArray = []
       return false;
     }
-
+    console.log("doesnt reach this point")
     for (var player of this.players){
+      console.log(player.calcArmyPoints(), babyArmyPoints)
       if(player.calcArmyPoints() > babyArmyPoints){
         player.points += babyArmyPoints;
-        $("#indicator").removeClass("hidden").text("Player " + player.name + " gained " + babyArmyPoints + " points.");
-        setTimeout(function () { $("#indicator").addClass("hidden"); }, 500);
+      }
       player.army = [];
     }
+    this.babiesDeck.cardsArray = []
+    $("#babyCount").text(this.babiesDeck.cardsArray.length)
     this.actionsLeft = 0;
     if (this.actionsLeft <= 1) {
       if (!this.players[this.currentPlayer + 1]) {
@@ -107,7 +109,7 @@ class Board{
       $('.player' + i).empty();
     }
   }
-}
+
   errorIndicator(text){
     $("#errorIndicator").removeClass("hidden").text(text);
     setTimeout(function () { $("#errorIndicator").addClass("hidden"); }, 750);

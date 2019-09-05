@@ -60,10 +60,10 @@ body{
 h1{
   margin-top:-5px;
 }
-
 h3{
   margin-block-start:.5em;
 }
+
 .bears-heading{
   font-family: 'Rock Salt', cursive;
 }
@@ -196,6 +196,9 @@ width: 6px;
   background-position: center;
   background-size:contain;
 }
+.card:hover{
+  cursor: pointer;
+}
 .monster-container{
   position:relative;
   width:100%;
@@ -247,7 +250,7 @@ width: 6px;
 
 .indicator{
   font-size: 3rem;
-  z-index: 9999;
+  z-index: 999;
   position:absolute;
   top:80%;
   left:50%;
@@ -260,7 +263,6 @@ width: 6px;
   top: 0;
   opacity: 0;
   transition: 1s ease-in;
-  left:0;
 }
 .errorIndicator{
   text-shadow: 0 0 4px rgba(0,0,0,.5);
