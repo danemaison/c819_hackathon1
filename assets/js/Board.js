@@ -5,7 +5,7 @@ class Board{
     this.babiesDeck = new Deck(this);
     this.currentPlayer = 0;
     this.actionsLeft = 4;
-    this.players = [new Player(this), new Player(this)];
+    this.players = [new Player(this, 1), new Player(this, 1)];
     this.cardQueue = null;
     this.draw  = this.draw.bind(this)
     this.provoke = this.provoke.bind(this)
@@ -24,6 +24,10 @@ class Board{
     }
 
   draw(){
+    if(this.drawDeck.cardsArray.length < 2){
+      this.winCondition();
+      return;
+    }
     var cardDrawn = this.drawDeck.draw();
     cardDrawn.parent = this.players[this.currentPlayer];
     this.players[this.currentPlayer].deck.placeInDeck(cardDrawn);
@@ -41,6 +45,18 @@ class Board{
     this.players[this.currentPlayer].render();
     this.players[this.currentPlayer].renderMonster();
     }
+
+  winCondition(){
+    var winner = this.players[0];
+    var winnerIndex = 0;
+    for(var numberOfPlayers = 1; numberOfPlayers < this.players.length; numberOfPlayers++){
+      if (this.players[numberOfPlayers].points > winner.points){
+        winner = this.players[numberOfPlayers];
+        winnerIndex = numberOfPlayers;
+      }
+      return [winner, winnerIndex];
+    }
+  }
 
   provoke(){
     // so click handler added to the babiesDom element. compare baby element points with
