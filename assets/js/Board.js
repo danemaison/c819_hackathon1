@@ -62,7 +62,10 @@ class Board{
       }
       this.actionsLeft = 4;
     }
-    this.players[this.currentPlayer].render();
+    for(var i = 1; i <= this.players.length; i++){
+      $('.player' + i).empty();
+    }
+
     // this.players[this.currentPlayer].renderMonster();
     // this.players[this.currentPlayer].renderMonster();
     // console.log(this)
