@@ -29,10 +29,6 @@ class Player{
       monsterContainer.append(this.army[i].rightArmElement);
       monsterContainer.append(this.army[i].legsElement);
 
-      // create a jquery div element to use as the container for the monster
-      // with a class of monster-container
-      // append to monster-container the monster's body parts
-
       var monsterDOM = this.createMonsterDomElement(this.army[i]);
       $('.player' + (this.parent.currentPlayer+1) ).append(monsterDOM)
     }
