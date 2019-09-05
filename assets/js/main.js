@@ -11,12 +11,14 @@ function initializeApp(){
     var tempRight = new Card(gameBoard.drawDeck, "rightArm", 1, "rightArm", "http://placecorgi.com/200/500", "");
     var tempLeft = new Card(gameBoard.drawDeck, "leftArm", 1, "leftArm", "http://placecorgi.com/200/500", "");
     var tempBody = new Card(gameBoard.drawDeck, "body", 1, "body", "http://placecorgi.com/200/500", "");
+    var tempProvoke = new Card(gameBoard.drawDeck, "provoke", 0, "provoke", "http://placecorgi.com/200/500", "");
     gameBoard.drawDeck.placeInDeck(tempBaby);
     gameBoard.drawDeck.placeInDeck(tempHead);
     gameBoard.drawDeck.placeInDeck(tempLeg);
     gameBoard.drawDeck.placeInDeck(tempRight);
     gameBoard.drawDeck.placeInDeck(tempLeft);
     gameBoard.drawDeck.placeInDeck(tempBody);
+    gameBoard.drawDeck.placeInDeck(tempProvoke);
   }
   // randomize deck
   // gameBoard.drawDeck.shuffle();

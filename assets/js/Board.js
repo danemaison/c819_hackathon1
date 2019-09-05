@@ -58,7 +58,7 @@ class Board{
     }
   }
 
-  provoke(){
+  provoke(event){
     // so click handler added to the babiesDom element. compare baby element points with
     // player Monsters.
     var babyArmyPoints = this.babiesDeck.calcPoints();
@@ -68,7 +68,12 @@ class Board{
 
       player.army = [];
     }
-    this.actionsLeft = 0;
+    if ($(event.currentTarget).attr("id") === "provoke"){
+      this.actionsLeft = 0;
+    }
+    else{
+      this.actionsLeft--;
+    }
     if (this.actionsLeft <= 1) {
       if (!this.players[this.currentPlayer + 1]) {
         this.currentPlayer = 0;
