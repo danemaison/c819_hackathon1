@@ -14,7 +14,6 @@ class Board{
     var drawDOM = $('<div>').addClass('draw').css("height", "100%");
     drawDOM.click(this.draw);
     var discardDOM = $("<div>").addClass("discard");
-    // var discardDOM =
     $('#drawPile').append(drawDOM);
     $("#discardPile").append(discardDOM);
     $("#provoke").on('click', this.provoke);
@@ -28,8 +27,8 @@ class Board{
     //
     var provokeGenerate = Math.floor(Math.random()*5);
     if (!provokeGenerate){
-      console.log("you just drew a provoke")
-      this.provoke();
+      this.errorIndicator('WILD PROVOKE!');
+      setTimeout(this.provoke, 750);
       this.players[this.currentPlayer].render();
       return;
     }
