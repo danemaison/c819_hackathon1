@@ -1,56 +1,53 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Chilanka&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <script src="assets/js/Board.js"></script>
-    <script src="assets/js/Card.js"></script>
-    <script src="assets/js/Player.js"></script>
-    <script src="assets/js/Monster.js"></script>
-    <script src="assets/js/Deck.js"></script>
-  </head>
-  <body>
-    <div class="flex-container">
-      <h1>BEARS VS. BABIES!</h1>
-      <main class="gameDisplayContainer">
-        <div id="babyDecksDisplay"><!--- baby decks go here --></div>
-        <!-- Beginning of player and draw, discard areas-->
-        <div id="playersAndDrawPiles">
-          <div id="playersDisplay">
-            <div class="player1Container">
-              <h3>Player One</h3>
-              <div class="player1"></div>
-            </div>
-            <div class="player2Container">
-              <h3>Player Two</h3>
-              <div class="player2"></div>
-            </div>
-          </div>
-          <div id="drawDiscard">
-            <div class="discard">
-              <h3>Discard</h3>
-              <div id="discardPile" class="cardImgBack"></div>
-            </div>
-            <div class="draw">
-              <h3>Draw</h3>
-              <div id="drawPile" class="cardImgBack"></div>
-            </div>
-          </div>
-        </div>
-        <div class="currentPlayer">
-          <h4 id='currentPlayer'></h4>
-        </div>
-        <!--End of player and draw, discard piles-->
-        <!--Begin player hand and baby points area-->
-        <div class="playerAndHandPoints">
-          <div id="playerHand"></div>
-          <div id="playerBabies"></div>
-        </div>
-        <!--End of player hand and baby points area-->
-      </main>
-    </div>
-    <!--End of game display area-->
-  </body>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Chilanka&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/Board.js"></script>
+  <script src="assets/js/Card.js"></script>
+  <script src="assets/js/Player.js"></script>
+  <script src="assets/js/Monster.js"></script>
+  <script src="assets/js/Deck.js"></script>
   <script src="assets/js/main.js"></script>
+</head>
+<body>
+  <h1 id="indicator" class='indicator hidden'></h1>
+  <div class="container">
+    <div class="row">
+      <h1>BEARS VS. BABIES!</h1>
+      <button id="provoke" class="provoke">Provoke</button>
+    </div>
+
+      <div class="row center-board">
+        <div class="col player-1">
+          <h3>Player One</h3>
+          <div class="player1">
+            <div class="monster-container">
+              <div class="monster-head"></div>
+              <div class="monster-body"></div>
+              <div class="monster-left-arm"></div>
+              <div class="monster-right-arm"></div>
+              <div class="monster-legs"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col player-2">
+          <h3>Player Two</h3>
+          <div class="player2"></div>
+        </div>
+        <div class="col draw-cards">
+          <h3>Discard</h3>
+          <div class="card" id='discardPile'></div>
+          <h3>Draw</h3>
+          <div class="card" id="drawPile"></div>
+        </div>
+      </div>
+      <div class="row current-player">
+        <div id="currentPlayer"></div>
+      </div>
+        <div class="players-hand" id="playerHand"></div>
+  </div>
+</body>
 </html>
