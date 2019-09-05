@@ -29,7 +29,6 @@ class Card{
       this.deck.parent.parent.actionsLeft--;
       // console.log(this)
       var tempMonster = new Monster(this, currentPlayer);
-      debugger;
       tempMonster.deck.placeInDeck(this); // puts selected card element into monsters deck property
       currentPlayer.addMonster(tempMonster); // this puts the mosnter into the players army array
       for(var i = 0; i < currentPlayer.deck.cardsArray.length; i++){
