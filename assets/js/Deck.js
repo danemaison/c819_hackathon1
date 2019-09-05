@@ -15,24 +15,6 @@ class Deck{
       this.parent.babiesDeck.placeInDeck(lastCard);
       return this.draw();
     }
-    else if (lastCard.type === "provoke") {
-      $("#indicator").removeClass("hidden").text("WILD PROVOKE!");
-      setTimeout(function () { $("#indicator").addClass("hidden"); }, 50);
-      this.parent.discardDeck.placeInDeck(lastCard);
-      this.parent.actionsLeft--;
-      if (this.parent.actionsLeft <= 1) {
-        if (!this.parent.players[this.parent.currentPlayer + 1]) {
-          this.parent.currentPlayer = 0;
-        }
-        else {
-          this.parent.currentPlayer++;
-        }
-        this.parent.actionsLeft = 4;
-      }
-      this.players[this.currentPlayer].render();
-      this.players[this.currentPlayer].renderMonster();
-      return this.draw();
-    }
     lastCard.deck = this.parent.players[this.parent.currentPlayer].deck;
     return lastCard;
   }
