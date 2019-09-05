@@ -1,9 +1,8 @@
 class Card{
-  constructor(deck, type, points, text, image, color){
+  constructor(deck, type, points, image, color){
     this.deck = deck; // deck parent...constructor?
     this.type = type;
     this.points = points;
-    this.text = text;
     this.image = image;
     this.color = color;
     // this.element = red/blue/green;
@@ -15,7 +14,6 @@ class Card{
   createDomElement() {
     var domElement = $("<div>")
     .addClass("card")
-    .text(this.text)
     .css("background-image", "url(" + this.image + ")")
     .click(this.clickHandler);
     this.domElement = domElement;
