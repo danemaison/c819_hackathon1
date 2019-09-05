@@ -66,12 +66,14 @@ class Board{
   provoke(event){
     if (event){
       if (this.actionsLeft != 4){
-        console.log("you cannot provoke after you made a turn")
+        // console.log("you cannot provoke after you made a turn")
+        this.errorIndicator("You must provoke on your first turn");
         return;
       }
     }
     var babyArmyPoints = this.babiesDeck.calcPoints();
     if (!this.babiesDeck.cardsArray.length){
+      this.errorIndicator("There are no babies to fight...");
       return;
     }
     var armyCount = 0;
@@ -79,6 +81,7 @@ class Board{
       armyCount += players.army.length;
     }
     if (!armyCount){
+      this.errorIndicator("The babies found no one to fight");
       this.babiesDeck.cardsArray = []
       return false;
     }
@@ -86,7 +89,8 @@ class Board{
     for (var player of this.players){
       if(player.calcArmyPoints() > babyArmyPoints){
         player.points += babyArmyPoints;
-
+        $("#indicator").removeClass("hidden").text("Player " + player.name + " gained " + babyArmyPoints + " points.");
+        setTimeout(function () { $("#indicator").addClass("hidden"); }, 500);
       player.army = [];
     }
     this.actionsLeft = 0;
@@ -104,4 +108,8 @@ class Board{
     }
   }
 }
+  errorIndicator(text){
+    $("#errorIndicator").removeClass("hidden").text(text);
+    setTimeout(function () { $("#errorIndicator").addClass("hidden"); }, 750);
+  }
 }
