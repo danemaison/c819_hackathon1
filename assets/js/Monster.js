@@ -14,7 +14,6 @@ class Monster {
   }
   createMonster() {
     this.domElement = $('<div>').text(this.points + " head");
-    this.player.parent.actionsLeft--;
     this.render();
   }
   addToMonster(card) {
