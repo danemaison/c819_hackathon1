@@ -9,10 +9,8 @@
     <script src="assets/js/Player.js"></script>
     <script src="assets/js/Monster.js"></script>
     <script src="assets/js/Deck.js"></script>
-
   </head>
   <body>
-
     <div class="flex-container">
       <h1>BEARS VS. BABIES!</h1>
       <main class="gameDisplayContainer">
@@ -38,12 +36,14 @@
               <h3>Draw</h3>
               <div id="drawPile" class="cardImgBack"></div>
             </div>
-
           </div>
+        </div>
+        <div class="currentPlayer">
+          <h4 id='currentPlayer'></h4>
         </div>
         <!--End of player and draw, discard piles-->
         <!--Begin player hand and baby points area-->
-        <div id="playerAndHandPoints">
+        <div class="playerAndHandPoints">
           <div id="playerHand"></div>
           <div id="playerBabies"></div>
         </div>
