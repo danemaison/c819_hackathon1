@@ -1,9 +1,10 @@
 class Player{
-  constructor(parent){
+  constructor(parent, name){
     this.deck = new Deck(this);
     this.army = [];
     this.points = 0;
     this.parent = parent;
+    this.name = name;
   }
   addMonster(monsterObj){
     this.army.push(monsterObj);
