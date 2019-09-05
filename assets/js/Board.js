@@ -63,7 +63,13 @@ class Board{
     }
   }
 
-  provoke(){
+  provoke(event){
+    if (event){
+      if (this.actionsLeft != 4){
+        console.log("you cannot provoke after you made a turn")
+        return;
+      }
+    }
     var babyArmyPoints = this.babiesDeck.calcPoints();
     if (!this.babiesDeck.cardsArray.length){
       return;
