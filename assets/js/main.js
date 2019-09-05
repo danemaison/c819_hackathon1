@@ -60,6 +60,7 @@ function initializeApp(){
     gameBoard.drawDeck.placeInDeck(tempLeft);
     gameBoard.drawDeck.placeInDeck(tempBody);
   }
+
   // randomize deck
   // gameBoard.drawDeck.shuffle();
   gameBoard.drawDeck.shuffle()
