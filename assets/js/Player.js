@@ -28,9 +28,7 @@ class Player{
       monsterContainer.append(this.army[i].leftArmElement);
       monsterContainer.append(this.army[i].rightArmElement);
       monsterContainer.append(this.army[i].legsElement);
-
-      var monsterDOM = this.createMonsterDomElement(this.army[i]);
-      $('.player' + (this.parent.currentPlayer+1) ).append(monsterDOM)
+      $('.player' + (this.parent.currentPlayer+1) ).append(monsterContainer);
     }
   }
 

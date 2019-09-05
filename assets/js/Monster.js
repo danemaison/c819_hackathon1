@@ -8,7 +8,7 @@ class Monster {
     this.legs = null;
     this.player = player;
     this.domElement = null;
-    this.headElement = $('<div>').addClass('monster-head');
+    this.headElement = $('<div>').addClass('monster-head').css('background-image', "url(" + headCard.image + ")");
     this.bodyElement = null;
     this.leftArmElement = null;
     this.rightArmElement = null;
@@ -25,7 +25,7 @@ class Monster {
       case 'body':
         if (this.body === null) {
           this.body = card;
-          this.bodyElement = $('<div>').addClass('monster-body').css('background-image', card.image);
+          this.bodyElement = $('<div>').addClass('monster-body').css('background-image', "url(" + card.image + ")");
           this.points += card.points;
           return true;
         }
@@ -40,7 +40,7 @@ class Monster {
         }
         if (this.leftArm === null) {
           this.leftArm = card;
-          this.leftArmElement = $('<div>').addClass('monster-left-arm').css('background-image', card.image);
+          this.leftArmElement = $('<div>').addClass('monster-left-arm').css('background-image', "url(" + card.image + ")");
           this.points += card.points;
           return true;
         }
@@ -55,7 +55,7 @@ class Monster {
         }
         if (this.rightArm === null) {
           this.rightArm = card;
-          this.rightArmElement = $('<div>').addClass('monster-right-arm').css('background-image', card.image);
+          this.rightArmElement = $('<div>').addClass('monster-right-arm').css('background-image', "url(" + card.image +")");
           this.points += card.points;
           return true;
         }
@@ -70,14 +70,10 @@ class Monster {
         }
         if (this.legs === null) {
           this.legs = card;
-          this.legsElement = $('<div>').addClass('monster-legs').css('background-image', card.image);
+          this.legsElement = $('<div>').addClass('monster-legs').css('background-image', "url(" + card.image + ")");
           this.points += card.points;
           return true;
         }
-        else{
-          return false;
-        }
-        break;
     }
   }
   render() {

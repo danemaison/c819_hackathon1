@@ -97,7 +97,6 @@ h3{
   position:relative;
   width:305px;
   height:300px;
-  background-color:orange;
 }
 .monster-head,
 .monster-body,
@@ -115,14 +114,12 @@ h3{
   transform: translate(-50%);
   width:34%;
   height:34%;
-  background-color:black;
 }
 
 .monster-body{
   top:33%;
   left:50%;
   transform: translate(-50%);
-  background-color:red;
   width:34%;
   height:34%;
 }
@@ -130,14 +127,12 @@ h3{
   top:66%;
   left:50%;
   transform: translate(-50%);
-  background-color: aqua;
   width:34%;
   height:34%
 }
 .monster-left-arm{
   left:0;
   top:33%;
-  background-color:rebeccapurple;
   width:33%;
   height:33%;
 }
@@ -146,11 +141,10 @@ h3{
   top: 33%;
   width:33%;
   height:33%;
-  background-color: blue;
 }
 
 .indicator{
-  font-size: 5rem;
+  font-size: 3rem;
   z-index: 9999;
   position:absolute;
   top:80%;
@@ -164,3 +158,5 @@ h3{
   top: 0;
   opacity: 0;
   transition: 1s ease-in;
+  left:0;
+}

@@ -10,14 +10,14 @@ class Deck{
   draw(){
     var lastCard = this.cardsArray.pop();
     if (lastCard.type === "baby"){
-      $("#indicator").toggle("hidden").text("Baby Army Size + 1");
-      setTimeout(function () {$("#indicator").toggle("hidden");}, 500);
+      $("#indicator").removeClass("hidden").text("Baby Army Size + 1");
+      setTimeout(function () {$("#indicator").addClass("hidden");}, 50);
       this.parent.babiesDeck.placeInDeck(lastCard);
       return this.draw();
     }
     else if (lastCard.type === "provoke") {
-      $("#indicator").toggle("hidden").text("WILD PROVOKE!");
-      setTimeout(function () { $("#indicator").toggle("hidden"); }, 500);
+      $("#indicator").removeClass("hidden").text("WILD PROVOKE!");
+      setTimeout(function () { $("#indicator").addClass("hidden"); }, 50);
       this.parent.discardDeck.placeInDeck(lastCard);
       this.parent.actionsLeft--;
       if (this.parent.actionsLeft <= 1) {
