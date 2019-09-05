@@ -13,6 +13,7 @@ class Player{
   render(){
     console.log(this.parent.currentPlayer);
     $('#currentPlayer').text('Player ' + (this.parent.currentPlayer + 1) + '\'s turn');
+    $('#currentPlayerScore').text('Current Score: ' + this.points);
     $('#playerHand').empty();
     for(var i = 0; i < this.deck.cardsArray.length; i++){
       $('#playerHand').append(this.deck.cardsArray[i].createDomElement());
@@ -22,7 +23,6 @@ class Player{
     $('.player' + (this.parent.currentPlayer + 1)).empty();
     for(var i = 0; i < this.army.length; i++){
       var monsterContainer = $('<div>').addClass('monster-container');
-
       monsterContainer.append(this.army[i].headElement);
       monsterContainer.append(this.army[i].bodyElement);
       monsterContainer.append(this.army[i].leftArmElement);
