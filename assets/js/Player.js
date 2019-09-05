@@ -22,9 +22,18 @@ class Player{
   renderMonster(){
     $('.player' + (this.parent.currentPlayer + 1)).empty();
     for(var i = 0; i < this.army.length; i++){
-      var monsterDOM = $('<div>').addClass('monster').text(this.army[i].points);
+      var monsterDOM = this.createMonsterDomElement(this.army[i]);
       $('.player' + (this.parent.currentPlayer+1) ).append(monsterDOM)
     }
+  }
+
+  createMonsterDomElement(monsterObj){
+    var monsterDOM = $('<div>').addClass('Monster').text(monsterObj.points);
+    for (var i = 0; i < monsterObj.deck.cardsArray.length; i++){
+      var bodyPartDOM = $("<div>").addClass(monsterObj.deck.cardsArray[i].type);
+      monsterDOM.append(bodyPartDOM);
+    }
+    return monsterDOM;
   }
 
   calcArmyPoints(){
