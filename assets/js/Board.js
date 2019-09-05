@@ -86,13 +86,34 @@ class Board{
       return false;
     }
     console.log("doesnt reach this point")
+    var winners = [];
+    var losers = [];
     for (var player of this.players){
-      console.log(player.calcArmyPoints(), babyArmyPoints)
+      console.log(player.calcArmyPoints(), babyArmyPoints);
       if(player.calcArmyPoints() > babyArmyPoints){
         player.points += babyArmyPoints;
+        // $("#indicator").removeClass("hidden").text("Player" + player.name
+        //  + " won");
+        // setTimeout(function () { $("#indicator").addClass("hidden"); }, 1500);
+        winners.push(player.name);
+      }
+      else{
+        losers.push(player.name)
       }
       player.army = [];
+      $("#currentPlayerScore").text("Current Score: " + this.players[this.currentPlayer].points);
     }
+
+    if (winners.length){
+      $("#indicator").removeClass("hidden").text("Players" + winners.join(" and ") + " won the battle");
+      setTimeout(function () { $("#indicator").addClass("hidden"); }, 1500);
+    }
+    else {
+
+      $("#indicator").removeClass("hidden").text("Players" + losers.join(" and ") + " lost the battle");
+      setTimeout(function () { $("#indicator").addClass("hidden"); }, 1500);
+    }
+
     this.babiesDeck.cardsArray = []
     $("#babyCount").text(this.babiesDeck.cardsArray.length)
     this.actionsLeft = 0;
@@ -108,6 +129,7 @@ class Board{
     for(var i = 1; i <= this.players.length; i++){
       $('.player' + i).empty();
     }
+    this.players[this.currentPlayer].render();
   }
 
   errorIndicator(text){
