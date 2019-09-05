@@ -24,7 +24,6 @@ class Board{
       this.winCondition();
       return;
     }
-    //
     var provokeGenerate = Math.floor(Math.random()*5);
     if (!provokeGenerate){
       this.errorIndicator('WILD PROVOKE!');
@@ -58,6 +57,7 @@ class Board{
         winner = this.players[numberOfPlayers];
         winnerIndex = numberOfPlayers;
       }
+      $('#winner').text('Player ' + winner.name + ' won!');
       $('.modalShadow.modal.hidden').removeClass('hidden');
       return [winner, winnerIndex];
     }
