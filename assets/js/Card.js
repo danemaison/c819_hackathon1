@@ -17,48 +17,50 @@ class Card{
     .text(this.text)
     .css("background-image", "url(" + this.image + ")")
     .click(this.clickHandler);
-    // console.log(domElement);
     this.domElement = domElement;
     return domElement;
   }
 
   clickHandler(){
-    console.log(this);
+    // If the card clicked was a head, create a new monster
     if(this.type === 'head'){
-      // console.log(this)
       this.deck.parent.addMonster(new Monster(this, this.deck.parent));
       for(var i = 0; i < this.deck.cardsArray.length; i++){
         if(this === this.deck.cardsArray[i]){
           this.deck.cardsArray.splice(i, 1);
-          console.log("card found");
           break;
         }
       }
-      this.deck.parent.parent.actionsLeft--;
-      this.deck.parent.render();
-      this.deck.parent.renderMonster();
     }
-    // if(!this.deck.parent.parent.currentCard){
-    //   this.deck.parent.parent.currentCard = this;
-    // }
+    // If it's not a head, append it to an available monster and remove from
+    // player's hand
     else{
-      // so if its not a head then it is a body part that they want to add
       for(var monster of this.deck.parent.army){
         if (monster.addToMonster(this)){
+          // remove from player hand
           for (var i = 0; i < this.deck.cardsArray.length; i++) {
             if (this === this.deck.cardsArray[i]) {
               this.deck.cardsArray.splice(i, 1);
-              console.log("card found");
             }
           }
-          this.deck.parent.render();
-          this.deck.parent.renderMonster();
-          this.deck.parent.parent.actionsLeft--;
-          return true;
         }
       }
     }
-  }
 
-  // nonHeadHandler
+    this.deck.parent.parent.actionsLeft--;
+    console.log('actions left: ', this.deck.parent.parent.actionsLeft);
+    if (!this.deck.parent.parent.actionsLeft) {
+      if (!this.deck.parent.parent.players[this.deck.parent.parent.currentPlayer + 1]) {
+        this.deck.parent.parent.currentPlayer = 0;
+      }
+      else {
+        this.deck.parent.parent.currentPlayer++;
+      }
+      this.deck.parent.parent.actionsLeft = 4;
+    }
+
+    console.log('currentPlayer: ', this.deck.parent.parent.currentPlayer);
+    this.deck.parent.render();
+    this.deck.parent.renderMonster();
+  }
 }
