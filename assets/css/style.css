@@ -20,13 +20,22 @@ h1{
 h3{
   margin-block-start:.5em;
 }
+.title{
+  text-align: left;
+  margin-left:50px;
+}
 .bears-heading{
   font-family: 'Rock Salt', cursive;
 }
 .babies-heading{
+  font-size:2.5rem;
+  background: linear-gradient(to right, rgb(255, 0, 0), rgb(231, 227, 3), rgb(67, 221, 20), rgb(0, 17, 255));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-family: 'Neucha', cursive;
 }
 .container{
+  position: relative;
   margin: auto;
   border-radius:20px;
   margin-top:2.5vh;
@@ -51,7 +60,27 @@ h3{
   flex-direction: column;
   align-content: center;
   justify-content: center;
-
+}
+.provoke{
+  background-image: url(../images/provoke-bg.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'Rock Salt', cursive;
+  padding: 40px 40px;
+  position:absolute;
+  font-size: 1rem;
+  top:0;
+  color:red;
+  right:9%;
+  border:0;
+  background-color:transparent;
+}
+.provoke:hover{
+  cursor: pointer;
+}
+.provoke:focus{
+  outline-style: none;
 }
 .center-board{
   justify-content: space-evenly;
@@ -62,9 +91,14 @@ h3{
   align-self:flex-start;
   justify-content: flex-start;
   margin-right:5px;
-  border: 3px solid brown;
-  border-radius:10px;
+  border: 3px solid rgb(180, 112, 73);
+
+  border-radius:5px;
   height:100%;
+}
+.player1, .player2{
+  height:100%;
+  width:100%;
 }
 .draw-cards{
   align-self:flex-start;
@@ -76,7 +110,6 @@ h3{
   margin-left:30px;
   margin-bottom:25px;
 }
-
 .players-hand{
   width:100%;
   display:flex;
@@ -111,22 +144,18 @@ h3{
 .monster-head{
   top:0;
   left:50%;
-  transform: translate(-50%);
   width:34%;
   height:34%;
 }
-
 .monster-body{
   top:33%;
   left:50%;
-  transform: translate(-50%);
   width:34%;
   height:34%;
 }
 .monster-legs{
   top:66%;
   left:50%;
-  transform: translate(-50%);
   width:34%;
   height:34%
 }
@@ -150,7 +179,7 @@ h3{
   top:80%;
   left:50%;
   transform: translate(-50%);
-   background: -webkit-linear-gradient(rgb(255, 0, 0), rgb(255, 255, 255));
+  background: -webkit-linear-gradient(0deg, rgb(255, 0, 0), rgb(231, 227, 3), rgb(67, 221, 20), rgb(0, 17, 255));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
