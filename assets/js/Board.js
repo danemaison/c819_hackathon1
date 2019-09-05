@@ -29,6 +29,17 @@ class Board{
     this.players[this.currentPlayer].deck.placeInDeck(cardDrawn);
     this.actionsLeft--;
     this.players[this.currentPlayer].render();
+    if (this.actionsLeft <= 1) {
+      if (!this.players[this.currentPlayer + 1]) {
+        this.currentPlayer = 0;
+      }
+      else {
+        this.currentPlayer++;
+      }
+      this.actionsLeft = 4;
+    }
+    this.players[this.currentPlayer].render();
+    this.players[this.currentPlayer].renderMonster();
     }
 
   provoke(){
@@ -36,15 +47,27 @@ class Board{
     // player Monsters.
     var babyArmyPoints = this.babiesDeck.calcPoints();
     for (var player of this.players){
-      console.log(console.log(babyArmyPoints, player.calcArmyPoints()))
       if(player.calcArmyPoints() > babyArmyPoints){
         player.points += babyArmyPoints;
-      }
-      console.log(babyArmyPoints, player.points)
+
       player.army = [];
     }
-    console.log(this)
+    this.actionsLeft = 0;
+    if (this.actionsLeft <= 1) {
+      if (!this.players[this.currentPlayer + 1]) {
+        this.currentPlayer = 0;
+      }
+      else {
+        this.currentPlayer++;
+      }
+      this.actionsLeft = 4;
+    }
+    this.players[this.currentPlayer].render();
+    // this.players[this.currentPlayer].renderMonster();
+    // this.players[this.currentPlayer].renderMonster();
+    // console.log(this)
     // so players fought and winners get baby points
     // both players lose their monsters
   }
+}
 }
