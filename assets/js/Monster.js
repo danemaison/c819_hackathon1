@@ -29,6 +29,10 @@ class Monster {
         }
         break;
       case 'leftArm':
+        if (this.body === null) {
+          break;
+          return;
+        }
         if (this.leftArm === null) {
           this.leftArm = card;
           this.points += card.points;
@@ -39,6 +43,10 @@ class Monster {
         }
         break;
       case 'rightArm':
+        if (this.body === null) {
+          break;
+          return;
+        }
         if (this.rightArm === null) {
           this.rightArm = card;
           this.points += card.points;
@@ -49,6 +57,10 @@ class Monster {
         }
         break;
       case 'legs':
+        if (this.body === null) {
+          break;
+          return;
+        }
         if (this.legs === null) {
           this.legs = card;
           this.points += card.points;
