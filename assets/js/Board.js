@@ -17,10 +17,7 @@ class Board{
     // var discardDOM =
     $('#drawPile').append(drawDOM);
     $("#discardPile").append(discardDOM);
-
-    var babyDOM = $('<div>').addClass('cardImgBack baby').css("height", "100%");
-    babyDOM.click(this.provoke);
-    $('#babyDecksDisplay').append(babyDOM);
+    $('#provoke').click(this.provoke);
     }
 
   draw(){
@@ -29,6 +26,33 @@ class Board{
       return;
     }
     var cardDrawn = this.drawDeck.draw();
+    if (cardDrawn.type === "baby") {
+      $("#indicator").toggle("hidden").text("Baby Army Size + 1");
+      setTimeout(function () { $("#indicator").toggle("hidden"); }, 500);
+      this.babiesDeck.placeInDeck(cardDrawn);
+      return this.draw();
+    }
+    else if (cardDrawn.type === "provoke") {
+      $("#indicator").toggle("hidden").text("WILD PROVOKE!");
+      setTimeout(function () { $("#indicator").toggle("hidden"); }, 500);
+      this.discardDeck.placeInDeck(cardDrawn);
+      this.actionsLeft--;
+      if (this.actionsLeft <= 1) {
+        if (!this.players[this.currentPlayer + 1]) {
+          this.currentPlayer = 0;
+        }
+        else {
+          this.currentPlayer++;
+        }
+        this.actionsLeft = 4;
+        this.players[this.currentPlayer].render();
+        this.players[this.currentPlayer].renderMonster();
+        return;
+      }
+      this.players[this.currentPlayer].render();
+      this.players[this.currentPlayer].renderMonster();
+      return this.draw();
+    }
     cardDrawn.parent = this.players[this.currentPlayer];
     this.players[this.currentPlayer].deck.placeInDeck(cardDrawn);
     this.actionsLeft--;
@@ -59,6 +83,12 @@ class Board{
   }
 
   provoke(){
+    for (player in this.players){
+      if (!player.army.length){
+        console.log("no army");
+        return false;
+      }
+    }
     // so click handler added to the babiesDom element. compare baby element points with
     // player Monsters.
     var babyArmyPoints = this.babiesDeck.calcPoints();
