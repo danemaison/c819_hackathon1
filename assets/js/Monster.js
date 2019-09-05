@@ -27,6 +27,7 @@ class Monster {
           this.body = card;
           this.bodyElement = $('<div>').addClass('monster-body').css('background-image', "url(" + card.image + ")");
           this.points += card.points;
+          this.deck.placeInDeck(card);
           return true;
         }
         else {
@@ -42,6 +43,7 @@ class Monster {
           this.leftArm = card;
           this.leftArmElement = $('<div>').addClass('monster-left-arm').css('background-image', "url(" + card.image + ")");
           this.points += card.points;
+          this.deck.placeInDeck(card);
           return true;
         }
         else {
@@ -57,6 +59,7 @@ class Monster {
           this.rightArm = card;
           this.rightArmElement = $('<div>').addClass('monster-right-arm').css('background-image', "url(" + card.image +")");
           this.points += card.points;
+          this.deck.placeInDeck(card);
           return true;
         }
         else {
@@ -72,6 +75,7 @@ class Monster {
           this.legs = card;
           this.legsElement = $('<div>').addClass('monster-legs').css('background-image', "url(" + card.image + ")");
           this.points += card.points;
+          this.deck.placeInDeck(card);
           return true;
         }
     }
