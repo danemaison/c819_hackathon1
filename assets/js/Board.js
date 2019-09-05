@@ -5,7 +5,7 @@ class Board{
     this.babiesDeck = new Deck(this);
     this.currentPlayer = 0;
     this.actionsLeft = 4;
-    this.players = [new Player(this, "one"), new Player(this, "two")];
+    this.players = [new Player(this, 1), new Player(this, 1)];
     this.cardQueue = null;
     this.draw  = this.draw.bind(this)
     this.provoke = this.provoke.bind(this)

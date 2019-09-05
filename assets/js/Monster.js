@@ -11,6 +11,7 @@ class Monster {
     console.log('headcard points:', headCard.points)
     this.points = headCard.points;
     this.deck = new Deck(this);
+    this.color = headCard.color;
   }
   // createMonster() {
   //   this.domElement = $('<div>').text(this.points + " head");

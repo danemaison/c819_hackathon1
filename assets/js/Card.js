@@ -1,10 +1,11 @@
 class Card{
-  constructor(deck, type, points, text, image){
+  constructor(deck, type, points, text, image, color){
     this.deck = deck; // deck parent...constructor?
     this.type = type;
     this.points = points;
     this.text = text;
     this.image = image;
+    this.color = color;
     // this.element = red/blue/green;
     this.clickHandler = this.clickHandler.bind(this);
     this.domElement = this.createDomElement();
@@ -28,7 +29,6 @@ class Card{
       this.deck.parent.parent.actionsLeft--;
       // console.log(this)
       var tempMonster = new Monster(this, currentPlayer);
-      debugger;
       tempMonster.deck.placeInDeck(this); // puts selected card element into monsters deck property
       currentPlayer.addMonster(tempMonster); // this puts the mosnter into the players army array
       for(var i = 0; i < currentPlayer.deck.cardsArray.length; i++){
