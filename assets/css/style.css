@@ -13,6 +13,50 @@ body{
   box-sizing: border-box;
 }
 
+#modalShadow {
+  background-color: rgba(0,0,0,.4);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+}
+
+#modalBody {
+  background-color: white;
+  height: 50vh;
+  width: 50vw;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+}
+
+#modalContent {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+}
+
+.modalClose {
+  background-color: white;
+  border: 2px solid transparent;
+  border-image: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+  border-image-slice: 1;
+  font-size: 15px;
+  height: 50px;
+  margin: auto;
+  display: block;
+  margin-top: 20px;
+}
+
+.modal.hidden{
+  display: none;
+}
+
 h1{
   margin-top:-5px;
 }
