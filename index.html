@@ -15,7 +15,8 @@
 </head>
 
 <body>
-  <h1 id="indicator" class='indicator hidden'>Test</h1>
+  <h1 id="indicator" class='indicator hidden'></h1>
+  <h1 id="errorIndicator" class='errorIndicator'></h1>
   <div class="container">
     <div class="row top">
       <h1 class="title">
@@ -28,14 +29,18 @@
       <button id="provoke" class="provoke">Provoke!</button>
     </div>
 
+    <div class="row player-titles">
+      <h3>Player One</h3>
+      <h3>Player Two</h3>
+    </div>
     <div class="row center-board">
+
       <div class="col player-1">
-        <h3>Player One</h3>
         <div class="player1">
         </div>
       </div>
       <div class="col player-2">
-        <h3>Player Two</h3>
+
         <div class="player2"></div>
       </div>
       <div class="col draw-cards">
