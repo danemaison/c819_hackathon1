@@ -26,7 +26,9 @@ class Card{
     console.log(this);
     if(this.type === 'head'){
       // console.log(this)
-      this.deck.parent.addMonster(new Monster(this, this.deck.parent));
+      var tempMonster = new Monster(this, this.deck.parent);
+      tempMonster.deck.placeInDeck(this); // puts selected card element into monsters deck property
+      this.deck.parent.addMonster(tempMonster); // this puts the mosnter into the players army array
       for(var i = 0; i < this.deck.cardsArray.length; i++){
         if(this === this.deck.cardsArray[i]){
           this.deck.cardsArray.splice(i, 1);

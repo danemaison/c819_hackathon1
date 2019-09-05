@@ -36,6 +36,7 @@ class Board{
     // player Monsters.
     var babyArmyPoints = this.babiesDeck.calcPoints();
     for (var player of this.players){
+      console.log(console.log(babyArmyPoints, player.calcArmyPoints()))
       if(player.calcArmyPoints() > babyArmyPoints){
         player.points += babyArmyPoints;
       }

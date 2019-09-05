@@ -31,5 +31,6 @@ class Player{
     for (var monster of this.army){
       tempPoints += monster.deck.calcPoints();
     }
+    return tempPoints;
   }
 }
