@@ -209,6 +209,7 @@ width: 6px;
   width:100%;
   height:300px;
 }
+.monster-score,
 .monster-head,
 .monster-body,
 .monster-legs,
@@ -218,6 +219,10 @@ width: 6px;
   background-size:contain;
   background-position: center;
   background-repeat: no-repeat;
+}
+.monster-score{
+  left:2%;
+  top:5%;
 }
 .monster-head{
   top:0;
