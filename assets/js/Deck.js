@@ -11,7 +11,7 @@ class Deck{
     var lastCard = this.cardsArray.pop();
     if (lastCard.type === "baby"){
       $("#indicator").removeClass("hidden").text("Baby Army Size + 1");
-      setTimeout(function () {$("#indicator").addClass("hidden");}, 50);
+      setTimeout(function () {$("#indicator").addClass("hidden");}, 300);
       this.parent.babiesDeck.placeInDeck(lastCard);
       return this.draw();
     }
