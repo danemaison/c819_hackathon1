@@ -20,10 +20,6 @@ h1{
 h3{
   margin-block-start:.5em;
 }
-.title{
-  text-align: left;
-  margin-left:50px;
-}
 .bears-heading{
   font-family: 'Rock Salt', cursive;
 }
@@ -61,6 +57,10 @@ h3{
   align-content: center;
   justify-content: center;
 }
+.top{
+  justify-content: space-around;
+  align-items: center;
+}
 .provoke{
   background-image: url(../images/provoke-bg.png);
   background-size: contain;
@@ -68,12 +68,9 @@ h3{
   background-repeat: no-repeat;
   font-family: 'Rock Salt', cursive;
   padding: 40px 40px;
-  position:absolute;
   font-size: 1rem;
-  top:0;
-  color:red;
-  right:9%;
   border:0;
+  color:red;
   background-color:transparent;
 }
 .provoke:hover{

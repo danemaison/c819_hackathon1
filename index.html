@@ -13,32 +13,43 @@
   <script src="assets/js/Deck.js"></script>
   <script src="assets/js/main.js"></script>
 </head>
+
 <body>
-  <h1 id="indicator" class='indicator hidden'></h1>
+  <h1 id="indicator" class='indicator hidden'>Test</h1>
   <div class="container">
-      <h1 class="title"> <span class="bears-heading">BEARS</span> VS. <span class="babies-heading">BABIES!</span></h1>
+    <div class="row top">
+      <h1 class="title">
+        <span class="bears-heading">BEARS</span> VS. <span class="babies-heading">BABIES!</span>
+      </h1>
+      <div class="col">
+        <div class="baby-count-title">Babies:</div>
+        <div id="babyCount" class="baby-count"> 0</div>
+      </div>
       <button id="provoke" class="provoke">Provoke!</button>
-      <div class="row center-board">
-        <div class="col player-1">
-          <h3>Player One</h3>
-          <div class="player1">
-          </div>
-        </div>
-        <div class="col player-2">
-          <h3>Player Two</h3>
-          <div class="player2"></div>
-        </div>
-        <div class="col draw-cards">
-          <h3>Discard</h3>
-          <div class="card" id='discardPile'></div>
-          <h3>Draw</h3>
-          <div class="card" id="drawPile"></div>
+    </div>
+
+    <div class="row center-board">
+      <div class="col player-1">
+        <h3>Player One</h3>
+        <div class="player1">
         </div>
       </div>
-      <div class="row current-player">
-        <div id="currentPlayer"></div>
+      <div class="col player-2">
+        <h3>Player Two</h3>
+        <div class="player2"></div>
       </div>
-        <div class="players-hand" id="playerHand"></div>
+      <div class="col draw-cards">
+        <h3>Discard</h3>
+        <div class="card" id='discardPile'></div>
+        <h3>Draw</h3>
+        <div class="card" id="drawPile"></div>
+      </div>
+    </div>
+    <div class="row current-player">
+      <div id="currentPlayer"></div>
+    </div>
+    <div class="players-hand" id="playerHand"></div>
   </div>
 </body>
+
 </html>
