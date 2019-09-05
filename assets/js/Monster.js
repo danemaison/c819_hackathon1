@@ -12,10 +12,10 @@ class Monster {
     this.points = headCard.points;
     this.deck = new Deck(this);
   }
-  createMonster() {
-    this.domElement = $('<div>').text(this.points + " head");
-    this.render();
-  }
+  // createMonster() {
+  //   this.domElement = $('<div>').text(this.points + " head");
+  //   this.render();
+  // }
   addToMonster(card) {
     switch (card.type) {
       case 'body':

@@ -24,7 +24,11 @@ class Card{
   clickHandler(){
     // If the card clicked was a head, create a new monster
     if(this.type === 'head'){
-      this.deck.parent.addMonster(new Monster(this, this.deck.parent));
+
+      // console.log(this)
+      var tempMonster = new Monster(this, this.deck.parent);
+      tempMonster.deck.placeInDeck(this); // puts selected card element into monsters deck property
+      this.deck.parent.addMonster(tempMonster); // this puts the mosnter into the players army array
       for(var i = 0; i < this.deck.cardsArray.length; i++){
         if(this === this.deck.cardsArray[i]){
           this.deck.cardsArray.splice(i, 1);
