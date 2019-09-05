@@ -10,13 +10,12 @@ class Player{
     // this.parent.actionsLeft--;
   }
   render(){
+    console.log(this.parent.currentPlayer);
+    $('#currentPlayer').text('Player ' + (this.parent.currentPlayer + 1) + '\'s turn');
     $('#playerHand').empty();
-    console.log(this.deck.cardsArray);
-    // console.log(this)
     for(var i = 0; i < this.deck.cardsArray.length; i++){
       $('#playerHand').append(this.deck.cardsArray[i].createDomElement());
     }
-    // console.log(this.deck);
   }
   renderMonster(){
     $('.player' + (this.parent.currentPlayer + 1)).empty();

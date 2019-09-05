@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Chilanka&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style2.css">
+  <script src="assets/js/Board.js"></script>
+  <script src="assets/js/Card.js"></script>
+  <script src="assets/js/Player.js"></script>
+  <script src="assets/js/Monster.js"></script>
+  <script src="assets/js/Deck.js"></script>
+  <script src="assets/js/main.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <h1>BEARS VS. BABIES!</h1>
+      <div class="row center-board">
+        <div class="col player-1">
+          <h3>Player One</h3>
+          <div class="player1"></div>
+        </div>
+        <div class="col player-2">
+          <h3>Player Two</h3>
+          <div class="player2"></div>
+        </div>
+        <div class="col draw-cards">
+          <h3>Discard</h3>
+          <div class="card" id='discardPile'></div>
+          <h3>Draw</h3>
+          <div class="card" id="drawPile"></div>
+        </div>
+      </div>
+      <div class="row current-player">
+        <div id="currentPlayer"></div>
+      </div>
+        <div class="players-hand" id="playerHand"></div>
+  </div>
+</body>
+</html>

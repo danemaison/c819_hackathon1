@@ -34,53 +34,51 @@ text-align: center;
 
 #playersAndDrawPiles {
   width: 100%;
-  height: 70%;
+  height: 65%;
   display: flex;
   justify-content: space-evenly;
-  border-bottom:2px solid black;
 }
 
 #playersDisplay {
   display:flex;
   flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
   height: 92.5%;
   width: 75%;
-  border: 2px solid black;
   border-radius:5px;
-  margin: auto;
 }
 
-.player1Container {
-  border-right:3px solid black;
+.player1Container, .player2Container {
+  border:2px solid black;
+  border-radius: 10px;
   height: 100%;
-  width: 50%;
-  border-right-style: dotted;
+  width: 45%;
 }
 
-.player2Container {
-  height: 100%;
-  width: 50%;
-}
+
 
 #drawDiscard {
   position: relative;
-  height: 75%;
+  height: 72%;
   width: 22.5%;
   /* border: 1px solid grey; */
   display: flex;
   flex-direction: column;
   align-content: flex-start;
 }
-.draw, .discard{
-  display:flex;
-  align-content: center;
-  flex-direction: column;
-  justify-content: flex-start;
+
+.currentPlayer{
+  margin-top:-20px;
+  margin-left:20px;
+  text-align: left;
+  height:5%;
+
 }
 
 .cardImgBack {
   border-radius:5px;
-  height:130px;
+  height:125px;
   margin:5px;
   background-image: url("../images/backimage.png");
   background-repeat: no-repeat;
@@ -88,10 +86,9 @@ text-align: center;
   background-size:contain;
 }
 
-#playerAndHandPoints{
+.playerAndHandPoints{
   width: 100%;
   height: 15%;
-  display: flex;
 }
 
 .card {
@@ -104,13 +101,13 @@ text-align: center;
 
 #playerHand {
   display: flex;
-  justify-content: space-evenly;
-  width: 80%;
+  justify-content: center;
+  width: 100%;
   height: 100%;
 }
 
 #playerBabies {
   width: 20%;
   height: 100%;
-  border-left: 2px solid black;
+
 }
