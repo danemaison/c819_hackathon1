@@ -58,7 +58,10 @@ class Board{
         winner = this.players[numberOfPlayers];
         winnerIndex = numberOfPlayers;
       }
-      $('.modalShadow.modal.hidden').removeClass('hidden');
+      $(".modalShadow.modal.hidden").removeClass("hidden");
+      $(".modalClose").on("click", function () {
+        window.location.reload();
+      });
       return [winner, winnerIndex];
     }
   }
