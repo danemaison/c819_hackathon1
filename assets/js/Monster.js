@@ -7,20 +7,18 @@ class Monster {
     this.rightArm = null;
     this.legs = null;
     this.player = player;
-    this.domElement = null;
     this.headElement = $('<div>').addClass('monster-head').css('background-image', "url(" + headCard.image + ")");
     this.bodyElement = null;
     this.leftArmElement = null;
     this.rightArmElement = null;
     this.legsElement = null;
-
-    console.log('headcard points:', headCard.points)
     this.points = headCard.points;
     this.deck = new Deck(this);
     this.color = headCard.color;
   }
   addToMonster(card) {
-    console.log(card);
+    // This will add a DOM element to the Monster object for
+    // each card type passed into it.
     switch (card.type) {
       case 'body':
         if (this.body === null) {
@@ -75,8 +73,5 @@ class Monster {
           return true;
         }
     }
-  }
-  render() {
-    $('#playersDisplay').append(this.domElement);
   }
 }

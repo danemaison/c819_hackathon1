@@ -8,10 +8,9 @@ class Player{
   }
   addMonster(monsterObj){
     this.army.push(monsterObj);
-    // this.parent.actionsLeft--;
   }
   render(){
-    console.log(this.parent.currentPlayer);
+    // Renders the player's hand and score on the DOM
     $('#currentPlayer').text('Player ' + (this.parent.currentPlayer + 1) + '\'s turn');
     $('#currentPlayerScore').text('Current Score: ' + this.points);
     $('#playerHand').empty();
@@ -20,6 +19,7 @@ class Player{
     }
   }
   renderMonster(){
+    // Renders each of the player's monsters on the DOM
     $('.player' + (this.parent.currentPlayer + 1)).empty();
     for(var i = 0; i < this.army.length; i++){
       var monsterContainer = $('<div>').addClass('monster-container');
@@ -33,16 +33,6 @@ class Player{
       $('.player' + (this.parent.currentPlayer+1) ).append(monsterContainer);
     }
   }
-
-  createMonsterDomElement(monsterObj){
-    var monsterDOM = $('<div>').addClass('Monster').text(monsterObj.points);
-    for (var i = 0; i < monsterObj.deck.cardsArray.length; i++){
-      var bodyPartDOM = $("<div>").addClass(monsterObj.deck.cardsArray[i].type);
-      monsterDOM.append(bodyPartDOM);
-    }
-    return monsterDOM;
-  }
-
   calcArmyPoints(){
     var tempPoints = 0;
     for (var monster of this.army){
