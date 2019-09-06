@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Chilanka&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Neucha|Rock+Salt&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/Board.js"></script>
+  <script src="assets/js/Card.js"></script>
+  <script src="assets/js/Player.js"></script>
+  <script src="assets/js/Monster.js"></script>
+  <script src="assets/js/Deck.js"></script>
+  <script src="assets/js/main.js"></script>
+</head>
+
+<body>
+<div class="modalShadow modal hidden">
+  <div class="modalBody">
+    <div class="modalContent">
+      <div class="col">
+        <p id="winner"></p>
+        <button type="modalButton" class="modalClose">PLAY AGAIN</button>
+      </div>
+    </div>
+  </div>
+</div>
+  <h1 id="indicator" class='indicator hidden'></h1>
+  <h1 id="errorIndicator" class='errorIndicator hidden'></h1>
+  <div class="container">
+    <div class="row top">
+      <h1 class="title">
+        <span class="bears-heading">BEARS</span> VS. <span class="babies-heading">BABIES!</span>
+      </h1>
+      <div class="col">
+        <div class="baby-count-title">Babies:</div>
+        <div id="babyCount" class="baby-count"> 0</div>
+      </div>
+      <button id="provoke" class="provoke">Provoke!</button>
+    </div>
+    <div class="row player-titles">
+        <h3>Player One's Army: </h3>
+        <h3>Player Two's Army: </h3>
+    </div>
+    <div class="row center-board">
+      <div class="col player-1">
+        <div class="player1">
+        </div>
+      </div>
+      <div class="col player-2">
+        <div class="player2"></div>
+      </div>
+      <div class="col draw-cards">
+        <h3>Discard</h3>
+        <div class="card" id='discardPile'></div>
+        <h3>Draw</h3>
+        <div class="card" id="drawPile"></div>
+      </div>
+    </div>
+    <div class="row current-player">
+      <div class="col">
+        <div id="currentPlayer"></div>
+        <div id="currentPlayerScore">Current Score:</div>
+      </div>
+
+    </div>
+    <div class="players-hand" id="playerHand"></div>
+  </div>
+</body>
+
+</html>
