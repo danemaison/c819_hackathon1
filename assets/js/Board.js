@@ -24,7 +24,6 @@ class Board{
       this.winCondition();
       return;
     }
-    //
     var provokeGenerate = Math.floor(Math.random()*5);
     if (!provokeGenerate){
       this.errorIndicator('WILD PROVOKE!');
@@ -58,10 +57,15 @@ class Board{
         winner = this.players[numberOfPlayers];
         winnerIndex = numberOfPlayers;
       }
+
       $(".modalShadow.modal.hidden").removeClass("hidden");
       $(".modalClose").on("click", function () {
         window.location.reload();
       });
+
+      $('#winner').text('Player ' + winner.name + ' won!');
+      $('.modalShadow.modal.hidden').removeClass('hidden');
+
       return [winner, winnerIndex];
     }
   }
@@ -108,12 +112,12 @@ class Board{
     }
 
     if (winners.length){
-      $("#indicator").removeClass("hidden").text("Players" + winners.join(" and ") + " won the battle");
+      $("#indicator").removeClass("hidden").text("Players " + winners.join(" and ") + " won the battle");
       setTimeout(function () { $("#indicator").addClass("hidden"); }, 1500);
     }
     else {
 
-      $("#indicator").removeClass("hidden").text("Players" + losers.join(" and ") + " lost the battle");
+      $("#indicator").removeClass("hidden").text("Players " + losers.join(" and ") + " lost the battle");
       setTimeout(function () { $("#indicator").addClass("hidden"); }, 1500);
     }
 
