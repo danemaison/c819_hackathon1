@@ -1,11 +1,10 @@
 class Card{
   constructor(deck, type, points, image, color){
-    this.deck = deck; // deck parent...constructor?
+    this.deck = deck;
     this.type = type;
     this.points = points;
     this.image = image;
     this.color = color;
-    // this.element = red/blue/green;
     this.clickHandler = this.clickHandler.bind(this);
     this.domElement = this.createDomElement();
   }
@@ -25,7 +24,6 @@ class Card{
     // If the card clicked was a head, create a new monster
     if(this.type === 'head'){
       this.deck.parent.parent.actionsLeft--;
-      // console.log(this)
       var tempMonster = new Monster(this, currentPlayer);
       tempMonster.deck.placeInDeck(this); // puts selected card element into monsters deck property
       currentPlayer.addMonster(tempMonster); // this puts the mosnter into the players army array
@@ -52,12 +50,8 @@ class Card{
         }
       }
     }
-    //need to add Army points to Army display
-    // var currentArmyPoints = this.deck.parent.calcArmyPoints()
-    // $('.player1').text(currentArmyPoints);
     currentPlayer.render();
     currentPlayer.renderMonster();
-    console.log('actions left: ', this.deck.parent.parent.actionsLeft);
     if (this.deck.parent.parent.actionsLeft <= 1) {
       if (!this.deck.parent.parent.players[this.deck.parent.parent.currentPlayer + 1]) {
         this.deck.parent.parent.currentPlayer = 0;
@@ -67,9 +61,6 @@ class Card{
       }
       this.deck.parent.parent.actionsLeft = 4;
     }
-
-
-    console.log('currentPlayer: ', this.deck.parent.parent.currentPlayer);
     this.deck.parent.parent.players[this.deck.parent.parent.currentPlayer].render();
     this.deck.parent.parent.players[this.deck.parent.parent.currentPlayer].renderMonster();
   }
