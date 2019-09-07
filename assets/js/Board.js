@@ -140,4 +140,40 @@ class Board{
     $("#errorIndicator").removeClass("hidden").text(text);
     setTimeout(function () { $("#errorIndicator").addClass("hidden"); }, 750);
   }
+
+  loadCards(images) {
+    for (var i = 0; i < images.length; i++) {
+      var card = null;
+      var path = 'assets/images/' + images[i];
+      if (images[i].includes('body')) {
+        card = new Card(this.drawDeck, 'body', 1, path, null);
+      }
+      else if (images[i].includes('head')) {
+        card = new Card(this.drawDeck, 'head', 2, path, null);
+      }
+      else if (images[i].includes('leftArm')) {
+        card = new Card(this.drawDeck, 'leftArm', 1, path, null);
+      }
+      else if (images[i].includes('rightArm')) {
+        card = new Card(this.drawDeck, 'rightArm', 1, path, null);
+      }
+      else if (images[i].includes('legs')) {
+        card = new Card(this.drawDeck, 'legs', 2, path, null);
+      }
+      else if (images[i].includes('baby')) {
+        card = new Card(this.drawDeck, 'baby', Math.floor(Math.random() * 3));
+      }
+      this.drawDeck.placeInDeck(card);
+    }
+  }
+
+  initializePlayerDecks() {
+    // for each player in the game, pass five cards out.
+    for (var player of this.players) {
+      for (var i = 0; i < 5; i++) {
+        var handout = this.drawDeck.draw()
+        player.deck.placeInDeck(handout);
+      }
+    }
+  }
 }
