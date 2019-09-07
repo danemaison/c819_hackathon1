@@ -1,5 +1,6 @@
 class Board{
   constructor(){
+    this.test = true;
     this.drawDeck = new Deck(this);
     this.discardDeck = new Deck(this);
     this.babiesDeck = new Deck(this);
@@ -7,8 +8,8 @@ class Board{
     this.actionsLeft = 4;
     this.players = [new Player(this, 1), new Player(this, 2)];
     this.cardQueue = null;
-    this.draw  = this.draw.bind(this)
-    this.provoke = this.provoke.bind(this)
+    this.draw  = this.draw.bind(this);
+    this.provoke = this.provoke.bind(this);
   }
   generateDom(){
     var drawDOM = $('<div>').addClass('draw').css("height", "100%");
@@ -88,7 +89,6 @@ class Board{
     }
     if (!armyCount){
       this.errorIndicator("The babies found no one to fight");
-
       return false;
     }
     var winners = [];

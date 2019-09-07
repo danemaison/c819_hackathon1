@@ -1,10 +1,16 @@
 class Deck{
-  constructor(parent){
+  constructor(parent, cardClickCallback){
     // The parent of the deck will either be a player or a board object
     this.cardsArray = [];
+    this.cardClickCallback = cardClickCallback;
     this.parent = parent;
   }
   placeInDeck(cardObj){
+    if(!this.parent.test){
+      debugger;
+    }
+
+    cardObj.setClickCallback(this.cardClickCallback);
     this.cardsArray.push(cardObj);
   }
   draw(){
@@ -30,7 +36,7 @@ class Deck{
       newArray.push(this.cardsArray.splice(index, 1));
     }
     this.cardsArray = newArray.flat();
-}
+  }
   calcPoints(){
     var pointTotal = 0;
     for (var i of this.cardsArray){

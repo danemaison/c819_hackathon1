@@ -1,5 +1,6 @@
 class Card{
   constructor(deck, type, points, image, color){
+    this.clickCallback = null;
     this.deck = deck;
     this.type = type;
     this.points = points;
@@ -12,14 +13,20 @@ class Card{
   // creates card html element for rendering
   createDomElement() {
     var domElement = $("<div>")
-    .addClass("card")
-    .css("background-image", "url(" + this.image + ")")
-    .click(this.clickHandler);
+      .addClass("card")
+      .css("background-image", "url(" + this.image + ")")
+      .click(this.clickHandler);
+
     this.domElement = domElement;
     return domElement;
   }
+  setClickCallback(callback){
+    this.clickCallback = callback;
+  }
 
   clickHandler(){
+    debugger;
+    this.clickCallback(this);
     var currentPlayer = this.deck.parent.parent.players[this.deck.parent.parent.currentPlayer];
     // If the card clicked was a head, create a new monster
     if(this.type === 'head'){

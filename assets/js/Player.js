@@ -1,6 +1,8 @@
 class Player{
   constructor(parent, name){
-    this.deck = new Deck(this);
+    this.handleCardInHandClick = this.handleCardInHandClick.bind(this);
+    debugger;
+    this.deck = new Deck(this, this.handleCardInHandClick);
     this.army = [];
     this.points = 0;
     this.parent = parent;
@@ -8,6 +10,16 @@ class Player{
   }
   addMonster(monsterObj){
     this.army.push(monsterObj);
+  }
+  getPlayerData(){
+    return {
+      id: this.id,
+      points: this.points,
+      cards: this.deck.cardsArray
+    };
+  }
+  handleCardInHandClick(cardObj){
+    console.log('card clicked', cardObj);
   }
   render(){
     // Renders the player's hand and score on the DOM
