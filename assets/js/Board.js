@@ -1,14 +1,16 @@
 class Board{
   constructor(){
+    this.draw = this.draw.bind(this);
+    this.provoke = this.provoke.bind(this);
+    this.test = true;
     this.drawDeck = new Deck(this);
     this.discardDeck = new Deck(this);
     this.babiesDeck = new Deck(this);
     this.currentPlayer = 0;
     this.actionsLeft = 4;
-    this.players = [new Player(this, 1), new Player(this, 2)];
+    this.players = [new Player('player1', this.decrementActionsLeft), new Player('player2', this.decrementActionsLeft)];
     this.cardQueue = null;
-    this.draw  = this.draw.bind(this)
-    this.provoke = this.provoke.bind(this)
+
   }
   generateDom(){
     var drawDOM = $('<div>').addClass('draw').css("height", "100%");
@@ -18,7 +20,9 @@ class Board{
     $("#discardPile").append(discardDOM);
     $("#provoke").on('click', this.provoke);
   }
-
+  decrementActionsLeft(){
+    this.actionsLeft--;
+  }
   draw(){
     if(this.drawDeck.cardsArray.length < 2){
       this.winCondition();
@@ -34,7 +38,7 @@ class Board{
     var cardDrawn = this.drawDeck.draw();
     cardDrawn.parent = this.players[this.currentPlayer];
     this.players[this.currentPlayer].deck.placeInDeck(cardDrawn);
-    this.actionsLeft--;
+    this.decrementActionsLeft();
     this.players[this.currentPlayer].render();
     if (this.actionsLeft <= 1) {
       if (!this.players[this.currentPlayer + 1]) {
@@ -84,11 +88,10 @@ class Board{
     }
     var armyCount = 0;
     for (var players of this.players){
-      armyCount += players.army.length;
+      armyCount += players.monsterArmy.length;
     }
     if (!armyCount){
       this.errorIndicator("The babies found no one to fight");
-
       return false;
     }
     var winners = [];
@@ -101,7 +104,7 @@ class Board{
       else{
         losers.push(player.name)
       }
-      player.army = [];
+      player.monsterArmy = [];
       $("#currentPlayerScore").text("Current Score: " + this.players[this.currentPlayer].points);
     }
 

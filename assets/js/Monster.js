@@ -23,7 +23,9 @@ class Monster {
     switch (card.type) {
       case 'body':
         if (this.body === null) {
+          // this[card.type] = card;
           this.body = card;
+          // this[card.type + 'Element']
           this.bodyElement = $('<div>').addClass('monster-body').css('background-image', "url(" + card.image + ")");
           this.points += card.points;
           this.deck.placeInDeck(card);
@@ -32,11 +34,9 @@ class Monster {
         else {
           return false;
         }
-        break;
       case 'leftArm':
         if (this.body === null) {
           break;
-          return;
         }
         if (this.leftArm === null) {
           this.leftArm = card;
@@ -48,11 +48,9 @@ class Monster {
         else {
           return false;
         }
-        break;
       case 'rightArm':
         if (this.body === null) {
           break;
-          return;
         }
         if (this.rightArm === null) {
           this.rightArm = card;
@@ -64,11 +62,9 @@ class Monster {
         else {
           return false;
         }
-        break;
       case 'legs':
         if (this.body === null) {
           break;
-          return;
         }
         if (this.legs === null) {
           this.legs = card;

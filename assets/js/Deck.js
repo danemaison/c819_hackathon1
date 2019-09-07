@@ -1,10 +1,12 @@
 class Deck{
-  constructor(parent){
+  constructor(parent, cardClickCallback){
     // The parent of the deck will either be a player or a board object
     this.cardsArray = [];
+    this.cardClickCallback = cardClickCallback;
     this.parent = parent;
   }
   placeInDeck(cardObj){
+    cardObj.setClickCallback(this.cardClickCallback);
     this.cardsArray.push(cardObj);
   }
   draw(){
