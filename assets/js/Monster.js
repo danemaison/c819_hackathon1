@@ -7,6 +7,7 @@ class Monster {
     this.rightArm = null;
     this.legs = null;
     this.player = player;
+//parent again?
     this.headElement = $('<div>').addClass('monster-head').css('background-image', "url(" + headCard.image + ")");
     this.bodyElement = null;
     this.leftArmElement = null;
@@ -23,6 +24,12 @@ class Monster {
       case 'body':
         if (this.body === null) {
           this.body = card;
+//this stuff should be movd into the card
+//monster.js 26-42 all these cards rendered should be in the card return que
+//try to make it with no repeating - could have taken the type and used it to distinguish which card it is
+//ie this[card.type] = card
+//ie this[card.type + 'element']
+//make it into an conditional statement then
           this.bodyElement = $('<div>').addClass('monster-body').css('background-image', "url(" + card.image + ")");
           this.points += card.points;
           this.deck.placeInDeck(card);
