@@ -2,7 +2,6 @@ class Board{
   constructor(){
     this.draw = this.draw.bind(this);
     this.provoke = this.provoke.bind(this);
-    this.decrementActions = this.decrementActions.bind(this);
     this.test = true;
     this.drawDeck = new Deck(this);
     this.discardDeck = new Deck(this);
@@ -89,7 +88,7 @@ class Board{
     }
     var armyCount = 0;
     for (var players of this.players){
-      armyCount += players.army.length;
+      armyCount += players.monsterArmy.length;
     }
     if (!armyCount){
       this.errorIndicator("The babies found no one to fight");
@@ -105,7 +104,7 @@ class Board{
       else{
         losers.push(player.name)
       }
-      player.army = [];
+      player.monsterArmy = [];
       $("#currentPlayerScore").text("Current Score: " + this.players[this.currentPlayer].points);
     }
 

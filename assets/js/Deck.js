@@ -6,10 +6,6 @@ class Deck{
     this.parent = parent;
   }
   placeInDeck(cardObj){
-    if(!this.parent.test){
-      debugger;
-    }
-
     cardObj.setClickCallback(this.cardClickCallback);
     this.cardsArray.push(cardObj);
   }

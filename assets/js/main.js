@@ -1,5 +1,17 @@
 $(document).ready(initializeApp)
 
+var cardData = [
+  {
+    type: 'body',
+    image: 'body1.png',
+    power: 2,
+  },
+  {
+    type: 'head',
+    image: 'head1.jpg',
+    power: 2,
+  },
+]
 var images = [
   'body1.png',
   'body2.jpg',
@@ -72,45 +84,46 @@ var images = [
   'baby',
 ]
 
-var gameBoard = new Board();
 
-function loadCards(){
-  for(var i = 0; i < images.length; i++){
-    var card = null;
-    var path = 'assets/images/' + images[i];
-    if(images[i].includes('body')){
-      card = new Card(gameBoard.drawDeck, 'body', 1, path, null);
-    }
-    else if(images[i].includes('head')){
-      card = new Card(gameBoard.drawDeck, 'head', 2, path, null);
-    }
-    else if (images[i].includes('leftArm')) {
-      card = new Card(gameBoard.drawDeck, 'leftArm', 1, path, null);
-    }
-    else if (images[i].includes('rightArm')) {
-      card = new Card(gameBoard.drawDeck, 'rightArm', 1, path, null);
-    }
-    else if (images[i].includes('legs')) {
-      card = new Card(gameBoard.drawDeck, 'legs', 2, path, null);
-    }
-    else if (images[i].includes('baby')) {
-      card = new Card(gameBoard.drawDeck, 'baby', Math.floor(Math.random() * 3));
-    }
-    gameBoard.drawDeck.placeInDeck(card);
-  }
-}
-
-function initializePlayerDecks(){
-  // for each player in the game, pass five cards out.
-  for (var player of gameBoard.players) {
-    for (var i = 0; i < 5; i++) {
-      var handout = gameBoard.drawDeck.draw()
-      player.deck.placeInDeck(handout);
-    }
-  }
-}
 
 function initializeApp(){
+  var gameBoard = new Board();
+  function loadCards() {
+    for (var i = 0; i < images.length; i++) {
+      var card = null;
+      var path = 'assets/images/' + images[i];
+      if (images[i].includes('body')) {
+        card = new Card(gameBoard.drawDeck, 'body', 1, path, null);
+      }
+      else if (images[i].includes('head')) {
+        card = new Card(gameBoard.drawDeck, 'head', 2, path, null);
+      }
+      else if (images[i].includes('leftArm')) {
+        card = new Card(gameBoard.drawDeck, 'leftArm', 1, path, null);
+      }
+      else if (images[i].includes('rightArm')) {
+        card = new Card(gameBoard.drawDeck, 'rightArm', 1, path, null);
+      }
+      else if (images[i].includes('legs')) {
+        card = new Card(gameBoard.drawDeck, 'legs', 2, path, null);
+      }
+      else if (images[i].includes('baby')) {
+        card = new Card(gameBoard.drawDeck, 'baby', Math.floor(Math.random() * 3));
+      }
+      gameBoard.drawDeck.placeInDeck(card);
+    }
+  }
+
+  function initializePlayerDecks() {
+    // for each player in the game, pass five cards out.
+    for (var player of gameBoard.players) {
+      for (var i = 0; i < 5; i++) {
+        var handout = gameBoard.drawDeck.draw()
+        player.deck.placeInDeck(handout);
+      }
+    }
+  }
+
   loadCards();
   gameBoard.drawDeck.shuffle()
   initializePlayerDecks();
