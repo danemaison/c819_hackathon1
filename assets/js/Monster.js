@@ -7,6 +7,7 @@ class Monster {
     this.rightArm = null;
     this.legs = null;
     this.player = player;
+    this.monsterContainer = null;
     this.headElement = $('<div>').addClass('monster-head').css('background-image', "url(" + headCard.image + ")");
     this.bodyElement = null;
     this.leftArmElement = null;
@@ -73,5 +74,18 @@ class Monster {
           return true;
         }
     }
+  }
+
+  createMonsterDom(){
+    var monsterContainer = $('<div>').addClass('monster-container');
+    var monsterPoints = $('<div>').addClass("monster-score").text("Monster Power: " + this.deck.calcPoints());
+    monsterContainer.append(this.headElement);
+    monsterContainer.append(this.bodyElement);
+    monsterContainer.append(this.leftArmElement);
+    monsterContainer.append(this.rightArmElement);
+    monsterContainer.append(this.legsElement);
+    monsterContainer.append(monsterPoints);
+    this.monsterContainer = monsterContainer;
+    return monsterContainer;
   }
 }

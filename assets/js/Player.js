@@ -105,15 +105,8 @@ class Player{
   renderMonster(){
     // Renders each of the player's monsters on the DOM
     this.domElements.monsters.empty();
-    for(var i = 0; i < this.monsterArmy.length; i++){
-      var monsterContainer = $('<div>').addClass('monster-container');
-      var monsterPoints = $('<div>').addClass("monster-score").text("Monster Power: " + this.monsterArmy[i].deck.calcPoints());
-      monsterContainer.append(this.monsterArmy[i].headElement);
-      monsterContainer.append(this.monsterArmy[i].bodyElement);
-      monsterContainer.append(this.monsterArmy[i].leftArmElement);
-      monsterContainer.append(this.monsterArmy[i].rightArmElement);
-      monsterContainer.append(this.monsterArmy[i].legsElement);
-      monsterContainer.append(monsterPoints);
+    for(var i = 0; i < this.army.length; i++){
+      var monsterContainer = this.army[i].createMonsterDom();
       this.domElements.monsters.append(monsterContainer);
     }
     // $(".row.player-titles > h3:nth-child(1)").text("Player One's Army: " + this.parent.players[0].calcArmyPoints());

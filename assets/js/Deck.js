@@ -29,10 +29,10 @@ class Deck{
     var newArray = [];
     while (this.cardsArray.length > 0) {
       var index = Math.floor(Math.random() * this.cardsArray.length);
-      newArray.push(this.cardsArray.splice(index, 1));
+      newArray.push(this.cardsArray.splice(index, 1)[0]);
     }
-    this.cardsArray = newArray.flat();
-  }
+    this.cardsArray = newArray;
+}
   calcPoints(){
     var pointTotal = 0;
     for (var i of this.cardsArray){
@@ -40,6 +40,4 @@ class Deck{
     }
     return pointTotal;
   }
-
-
 }
