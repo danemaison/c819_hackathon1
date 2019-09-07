@@ -106,7 +106,7 @@ class Player{
     // Renders each of the player's monsters on the DOM
     this.domElements.monsters.empty();
     for(var i = 0; i < this.monsterArmy.length; i++){
-      var monsterContainer = this.monster[i].createMonsterDom();
+      var monsterContainer = this.monsterArmy[i].createMonsterDom();
       this.domElements.monsters.append(monsterContainer);
     }
     // $(".row.player-titles > h3:nth-child(1)").text("Player One's Army: " + this.parent.players[0].calcArmyPoints());
