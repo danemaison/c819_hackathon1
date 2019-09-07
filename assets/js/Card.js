@@ -1,12 +1,12 @@
 class Card{
   constructor(deck, type, points, image, color){
+    this.clickHandler = this.clickHandler.bind(this);
     this.clickCallback = null;
     this.deck = deck;
     this.type = type;
     this.points = points;
     this.image = image;
     this.color = color;
-    this.clickHandler = this.clickHandler.bind(this);
     this.domElement = this.createDomElement();
   }
 

@@ -1,12 +1,18 @@
 class Player{
-  constructor(parent, name){
+  constructor(name, decrementActionsLeft){
     this.handleCardInHandClick = this.handleCardInHandClick.bind(this);
-    debugger;
-    this.deck = new Deck(this, this.handleCardInHandClick);
-    this.army = [];
-    this.points = 0;
-    this.parent = parent;
     this.name = name;
+    this.deck = new Deck(this, this.handleCardInHandClick);
+    this.monsterArmy = [];
+    this.points = 0;
+    this.decrementActions = decrementActionsLeft;
+
+    this.domElements = {
+      playerTurn: $('#currentPlayer'),
+      playerScore: $('#currentPlayerScore'),
+      playerHand: $('#playerHand'),
+    }
+
   }
   addMonster(monsterObj){
     this.army.push(monsterObj);
@@ -19,15 +25,26 @@ class Player{
     };
   }
   handleCardInHandClick(cardObj){
+    // TODO:
+    // change parent of the card  🙃
     console.log('card clicked', cardObj);
+    if(cardObj.type === 'head'){
+      // add Monster to players monsters
+      this.addMonster(new Monster(cardObj, this));
+
+    }
+    this.render();
+    this.renderMonster();
+    this.decrementActionsLeft();
   }
+
   render(){
     // Renders the player's hand and score on the DOM
-    $('#currentPlayer').text('Player ' + (this.parent.currentPlayer + 1) + '\'s turn');
-    $('#currentPlayerScore').text('Current Score: ' + this.points);
-    $('#playerHand').empty();
+    this.domElements.playerDisplay.text(this.name + '\'s turn');
+    this.domElements.playerScore.text('Current Score: ' + this.points);
+    this.domElements.playerHand.empty();
     for(var i = 0; i < this.deck.cardsArray.length; i++){
-      $('#playerHand').append(this.deck.cardsArray[i].createDomElement());
+      this.domElements.playerHand.append(this.deck.cardsArray[i].createDomElement());
     }
   }
   renderMonster(){
