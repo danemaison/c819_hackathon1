@@ -5,12 +5,13 @@ class Player{
     this.deck = new Deck(this, this.handleCardInHandClick);
     this.monsterArmy = [];
     this.points = 0;
-    this.decrementActions = decrementActionsLeft;
+    this.decrementActions = decrementActionsLeft; //callback passed from board
 
     this.domElements = {
-      playerTurn: $('#currentPlayer'),
-      playerScore: $('#currentPlayerScore'),
-      playerHand: $('#playerHand'),
+      turn: $('#currentPlayer'),
+      score: $('#currentPlayerScore'),
+      hand: $('#playerHand'),
+      monsters: $('.' + this.name),
     }
 
   }
@@ -40,16 +41,16 @@ class Player{
 
   render(){
     // Renders the player's hand and score on the DOM
-    this.domElements.playerDisplay.text(this.name + '\'s turn');
-    this.domElements.playerScore.text('Current Score: ' + this.points);
-    this.domElements.playerHand.empty();
+    this.domElements.turn.text(this.name + '\'s turn');
+    this.domElements.score.text('Current Score: ' + this.points);
+    this.domElements.hand.empty();
     for(var i = 0; i < this.deck.cardsArray.length; i++){
-      this.domElements.playerHand.append(this.deck.cardsArray[i].createDomElement());
+      this.domElements.hand.append(this.deck.cardsArray[i].createDomElement());
     }
   }
   renderMonster(){
     // Renders each of the player's monsters on the DOM
-    $('.player' + (this.parent.currentPlayer + 1)).empty();
+    this.domElements.monsters.empty();
     for(var i = 0; i < this.army.length; i++){
       var monsterContainer = $('<div>').addClass('monster-container');
       var monsterPoints = $('<div>').addClass("monster-score").text("Monster Power: " + this.army[i].deck.calcPoints());
