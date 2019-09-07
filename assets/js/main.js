@@ -1,5 +1,12 @@
 $(document).ready(initializeApp)
 
+//put images in a different file and then load it
+//new Board and function loadCards into Board.js
+//function loadCards = an array of objects with type, body, image, body1, array of images possible, and then power
+//initialize Playerapp in Board.js too
+//
+
+
 var images = [
   'body1.png',
   'body2.jpg',
