@@ -24,7 +24,7 @@ class Board{
       this.winCondition();
       return;
     }
-    var provokeGenerate = Math.floor(Math.random()*5);
+    var provokeGenerate = Math.floor(Math.random()*12);
     if (!provokeGenerate){
       this.errorIndicator('WILD PROVOKE!');
       setTimeout(this.provoke, 750);
