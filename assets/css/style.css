@@ -135,6 +135,23 @@ h3{
 .provoke:focus{
   outline-style: none;
 }
+
+.babiesRemaining{
+  float: right;
+  color: white;
+  margin-right: 12%;
+  margin-top: 2%;
+}
+
+.actionsRemaining{
+font-size: 14px;
+}
+
+.cardsRemaining{
+  font-size: 14px;
+  margin-top: 5%;
+}
+
 .center-board{
   justify-content: space-evenly;
 }

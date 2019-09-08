@@ -16,9 +16,6 @@
 </head>
 
 <body>
-  <div id="babiesRemaining" style="color: white">babies remaining</div>
-  <div id="cardsRemaining" style="color: white">cards remaining</div>
-  <div id="actionsRemaining" style="color: white">actions remaining</div>
 <div class="modalShadow modal hidden">
   <div class="modalBody">
     <div class="modalContent">
@@ -31,13 +28,14 @@
 </div>
   <h1 id="indicator" class='indicator hidden'></h1>
   <h1 id="errorIndicator" class='errorIndicator hidden'></h1>
+  <div id="babiesRemaining" class="babiesRemaining">Babies remaining</div>
   <div class="container">
     <div class="row top">
       <h1 class="title">
         <span class="bears-heading">BEARS</span> VS. <span class="babies-heading">BABIES!</span>
       </h1>
       <div class="col">
-        <div class="baby-count-title">Babies:</div>
+        <div class="baby-count-title">Babies to Fight:</div>
         <div id="babyCount" class="baby-count"> 0</div>
       </div>
       <button id="provoke" class="provoke">Provoke!</button>
@@ -59,12 +57,14 @@
         <div class="card" id='discardPile'></div>
         <h3>Draw</h3>
         <div class="card" id="drawPile"></div>
+        <div id="cardsRemaining" class="cardsRemaining">Cards Remaining</div>
       </div>
     </div>
     <div class="row current-player">
       <div class="col">
         <div id="currentPlayer"></div>
         <div id="currentPlayerScore">Current Score:</div>
+        <div id="actionsRemaining" class="actionsRemaining">actions remaining</div>
       </div>
 
     </div>
