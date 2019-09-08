@@ -18,8 +18,6 @@ class Board{
     this.domElements = {
       errorIndicator: $("#errorIndicator"),
       indicator: $("#indicator"),
-
-     //
     }
 
   }
@@ -46,6 +44,7 @@ class Board{
     }
     $("#actionsRemaining").text("Actions Remaining: " + this.actionsLeft);
     this.players[this.currentPlayer].render();
+    //add in highlight?
     for(var player of this.players){
       player.renderMonsters();
     }
@@ -57,17 +56,17 @@ class Board{
     }
     var provokeGenerate = Math.floor(Math.random()*12);
     if (!provokeGenerate){
+      $(".baby.hidden").removeClass("hidden")
+      setTimeout(this.resetGif, 900);
       this.errorIndicator('WILD PROVOKE!');
-      setTimeout(this.provoke, 750);
+      setTimeout(this.provoke, 900);
       this.players[this.currentPlayer].render();
       return;
     }
-
     var cardDrawn = this.drawDeck.draw();
 
     this.players[this.currentPlayer].deck.placeInDeck(cardDrawn);
     this.takeTurn();
-
   }
 
   checkWin(){
@@ -78,7 +77,7 @@ class Board{
         winner = this.players[numberOfPlayers];
         winnerIndex = numberOfPlayers;
       }
-
+//fix reload
       $(".modalShadow.modal.hidden").removeClass("hidden");
       $(".modalClose").on("click", function () {
         window.location.reload();
@@ -95,6 +94,8 @@ class Board{
     if (event){
       if (this.actionsLeft != 4){
         this.errorIndicator("You must provoke on your first turn");
+        $(".baby.hidden").removeClass("hidden")
+        setTimeout(this.resetGif, 900);
         return;
       }
     }
@@ -109,6 +110,8 @@ class Board{
     }
     if (!armyCount){
       this.errorIndicator("The babies found no one to fight");
+      $(".baby.hidden").removeClass("hidden")
+      setTimeout(this.resetGif, 900);
       return false;
     }
     var winners = [];
@@ -128,16 +131,15 @@ class Board{
     if (winners.length){
       var tempDomRef = this.domElements.indicator;
       tempDomRef.removeClass("hidden").text("Players " + winners.join(" and ") + " won the battle");
-      setTimeout(function () { tempDomRef.addClass("hidden"); }, 1500);
+      setTimeout(function () { tempDomRef.addClass("hidden"); }, 1800);
     }
     else {
       var tempDomRef = this.domElements.indicator;
       tempDomRef.removeClass("hidden").text("Players " + losers.join(" and ") + " lost the battle");
-      setTimeout(function () { tempDomRef.addClass("hidden"); }, 1500);
+      setTimeout(function () { tempDomRef.addClass("hidden"); }, 1800);
     }
 
     this.babiesDeck.cardsArray = []
-
     $("#babyCount").text(this.babiesDeck.cardsArray.length)
 
     this.takeTurn(this.maxActions);
@@ -151,7 +153,11 @@ class Board{
   errorIndicator(text){
     var tempDomRef = this.domElements.errorIndicator;
     tempDomRef.removeClass("hidden").text(text);
-    setTimeout(function () { tempDomRef.addClass("hidden"); }, 750);
+    setTimeout(function () { tempDomRef.addClass("hidden"); }, 900);
+  }
+
+  resetGif() {
+    $(".babyGif").addClass("hidden");
   }
 
   loadCards(images) {
