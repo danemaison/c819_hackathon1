@@ -1,9 +1,8 @@
 class Board{
-  constructor(restartGame){
+  constructor(){
     this.draw = this.draw.bind(this);
     this.provoke = this.provoke.bind(this);
     this.takeTurn = this.takeTurn.bind(this);
-    this.restartGame = restartGame;
 
     this.drawDeck = new Deck(this);
     this.discardDeck = new Deck(this);
@@ -51,11 +50,20 @@ class Board{
     }
     this.domElements.actionsRemaining.text("Actions Remaining: " + this.actionsLeft);
     this.players[this.currentPlayer].render();
-    //add in highlight?
+    //color indicator who's turn
+      if(this.currentPlayer == 0){
+        $(".row.player-titles > h3:nth-child(1)").css("color", "blue");
+        $(".row.player-titles > h3:nth-child(2)").css("color", "black");
+      } else{
+        $(".row.player-titles > h3:nth-child(1)").css("color", "black");
+        $(".row.player-titles > h3:nth-child(2)").css("color", "blue");
+      }
+
     for(var player of this.players){
       player.renderMonsters();
     }
   }
+
   draw(){
     if(this.drawDeck.cardsArray.length < 2){
       this.checkWin();
@@ -83,10 +91,11 @@ class Board{
         winner = this.players[numberOfPlayers];
         winnerIndex = numberOfPlayers;
       }
-//FIX RELOAD
 
       $(".modalShadow.modal.hidden").removeClass("hidden");
-      $(".modalClose").on("click", this.restartGame);
+      $(".modalClose").on("click", function(){
+        window.location.reload();
+      });
 
       $('#winner').text('Player ' + winner.name + ' won!');
       $('.modalShadow.modal.hidden').removeClass('hidden');
