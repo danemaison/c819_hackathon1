@@ -25,6 +25,15 @@ class Deck{
     lastCard.deck = this.parent.players[this.parent.currentPlayer].deck;
     return lastCard;
   }
+  remove(cardObj){
+    for(var i = 0; i < this.cardsArray.length; i++){
+      if(this.cardsArray[i] === cardObj){
+        console.log('card found')
+        this.cardsArray.splice(i, 1);
+        break;
+      }
+    }
+  }
   shuffle() {
     var newArray = [];
     while (this.cardsArray.length > 0) {
