@@ -56,6 +56,7 @@ class Player{
       this.domElements.monsters.append(monsterContainer);
     }
   }
+
   calcArmyPoints(){
     var tempPoints = 0;
     for (var monster of this.monsterArmy){
