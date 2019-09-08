@@ -52,11 +52,13 @@ class Board{
     this.players[this.currentPlayer].render();
     //color indicator who's turn
       if(this.currentPlayer == 0){
+        $("#currentPlayer").css("color", "blue");
         $(".row.player-titles > h3:nth-child(1)").css("color", "blue");
         $(".row.player-titles > h3:nth-child(2)").css("color", "black");
       } else{
+        $("#currentPlayer").css("color", "orange");
         $(".row.player-titles > h3:nth-child(1)").css("color", "black");
-        $(".row.player-titles > h3:nth-child(2)").css("color", "blue");
+        $(".row.player-titles > h3:nth-child(2)").css("color", "orange");
       }
 
     for(var player of this.players){
