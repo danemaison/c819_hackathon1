@@ -29,7 +29,7 @@ class Player{
       this.deck.remove(cardObj);
       this.takeTurn();
     }
-    else{
+    else {
       for(var monster of this.monsterArmy){
         if(monster.addToMonster(cardObj)){
           this.deck.remove(cardObj);

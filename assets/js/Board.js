@@ -124,13 +124,14 @@ class Board{
     }
 
     if (winners.length){
-      this.domElements.indicator.removeClass("hidden").text("Players " + winners.join(" and ") + " won the battle");
-      setTimeout(function () { this.domElements.indicator.addClass("hidden"); }, 1500);
+      var tempDomRef = this.domElements.indicator;
+      tempDomRef.removeClass("hidden").text("Players " + winners.join(" and ") + " won the battle");
+      setTimeout(function () { tempDomRef.addClass("hidden"); }, 1500);
     }
     else {
-
-      this.domElements.indicator.removeClass("hidden").text("Players " + losers.join(" and ") + " lost the battle");
-      setTimeout(function () { this.domElements.indicator.addClass("hidden"); }, 1500);
+      var tempDomRef = this.domElements.indicator;
+      tempDomRef.removeClass("hidden").text("Players " + losers.join(" and ") + " lost the battle");
+      setTimeout(function () { tempDomRef.addClass("hidden"); }, 1500);
     }
 
     this.babiesDeck.cardsArray = []
@@ -146,8 +147,9 @@ class Board{
   }
 
   errorIndicator(text){
-    this.domElements.errorIndicator.removeClass("hidden").text(text);
-    setTimeout(function () { this.domElements.errorIndicator.addClass("hidden"); }, 750);
+    var tempDomRef = this.domElements.errorIndicator;
+    tempDomRef.removeClass("hidden").text(text);
+    setTimeout(function () { tempDomRef.addClass("hidden"); }, 750);
   }
 
   loadCards(images) {
