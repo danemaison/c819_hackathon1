@@ -11,6 +11,8 @@ class Player{
       turn: $('#currentPlayer'),
       score: $('#currentPlayerScore'),
       hand: $('#playerHand'),
+      // mosterContainer: $('.' + this.name.match(/[a-zA-Z]+|[0-9]+/g)[0] + "-" + this.name.match(/[a-zA-Z]+|[0-9]+/g)[1]),
+      outcome: $('.outcome'),
       monsters: $('.' + this.name),
     }
 
@@ -19,10 +21,6 @@ class Player{
     this.monsterArmy.push(monsterObj);
   }
   handleCardInHandClick(cardObj){
-    // TODO:
-    // remove card from deck
-    // change parent of the card  🙃
-    console.log('card clicked', cardObj);
     if(cardObj.type === 'head'){
       // add Monster to players monsters
       this.addMonster(new Monster(cardObj, this));
@@ -34,6 +32,7 @@ class Player{
         if(monster.addToMonster(cardObj)){
           this.deck.remove(cardObj);
           this.takeTurn();
+          break;
         }
       }
       // Board.js handles calling the player render methods
@@ -56,8 +55,6 @@ class Player{
       var monsterContainer = this.monsterArmy[i].createMonsterDom();
       this.domElements.monsters.append(monsterContainer);
     }
-    // $(".row.player-titles > h3:nth-child(1)").text("Player One's Army: " + this.parent.players[0].calcArmyPoints());
-    // $(".row.player-titles > h3:nth-child(2)").text("Player Two's Army: " + this.parent.players[1].calcArmyPoints());
   }
   calcArmyPoints(){
     var tempPoints = 0;
