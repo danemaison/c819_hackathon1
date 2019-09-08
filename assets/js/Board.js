@@ -30,6 +30,7 @@ class Board{
     $('#drawPile').append(drawDOM);
     $("#discardPile").append(discardDOM);
     $("#provoke").on('click', this.provoke);
+    $("#actionsRemaining").text("Actions Remaining: " + this.actionsLeft);
   }
   takeTurn(actions = 1){ // if no arguments are passed, 1 action is removed from actions left
     // decrements actions left and renders the current player
@@ -43,6 +44,7 @@ class Board{
         this.currentPlayer++;
       }
     }
+    $("#actionsRemaining").text("Actions Remaining: " + this.actionsLeft);
     this.players[this.currentPlayer].render();
     for(var player of this.players){
       player.renderMonsters();
