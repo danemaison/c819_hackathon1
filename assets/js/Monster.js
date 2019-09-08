@@ -17,6 +17,7 @@ class Monster {
     this.deck = new Deck(this);
     this.color = headCard.color;
   }
+
   addToMonster(card) {
     // This will add a DOM element to the Monster object for
     // each card type passed into it.
