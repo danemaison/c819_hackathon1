@@ -22,7 +22,6 @@ class Card{
   setClickCallback(callback){
     this.clickCallback = callback;
   }
-
   clickHandler(){
     this.clickCallback(this);
   }
