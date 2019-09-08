@@ -1,4 +1,3 @@
-
 class Monster {
   constructor(headCard, player) {
     this.head = headCard;

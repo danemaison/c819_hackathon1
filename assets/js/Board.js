@@ -2,14 +2,25 @@ class Board{
   constructor(){
     this.draw = this.draw.bind(this);
     this.provoke = this.provoke.bind(this);
-    this.test = true;
+    this.takeTurn = this.takeTurn.bind(this);
+
     this.drawDeck = new Deck(this);
     this.discardDeck = new Deck(this);
     this.babiesDeck = new Deck(this);
+
+    this.players = [new Player('player1', this.takeTurn), new Player('player2', this.takeTurn)];
     this.currentPlayer = 0;
-    this.actionsLeft = 4;
-    this.players = [new Player('player1', this.decrementActionsLeft), new Player('player2', this.decrementActionsLeft)];
+    this.maxActions = 4;
+    this.actionsLeft = this.maxActions;
+
     this.cardQueue = null;
+
+    this.domElements = {
+      errorIndicator: $("#errorIndicator"),
+      indicator: $("#indicator"),
+
+     //
+    }
 
   }
   generateDom(){
@@ -20,12 +31,26 @@ class Board{
     $("#discardPile").append(discardDOM);
     $("#provoke").on('click', this.provoke);
   }
-  decrementActionsLeft(){
-    this.actionsLeft--;
+  takeTurn(actions = 1){ // if no arguments are passed, 1 action is removed from actions left
+    // decrements actions left and renders the current player
+    this.actionsLeft -= actions;
+    if (this.actionsLeft <= 0) {
+      this.actionsLeft = this.maxActions;
+      if (!this.players[this.currentPlayer + 1]) {
+        this.currentPlayer = 0;
+      }
+      else {
+        this.currentPlayer++;
+      }
+    }
+    this.players[this.currentPlayer].render();
+    for(var player of this.players){
+      player.renderMonsters();
+    }
   }
   draw(){
     if(this.drawDeck.cardsArray.length < 2){
-      this.winCondition();
+      this.checkWin();
       return;
     }
     var provokeGenerate = Math.floor(Math.random()*12);
@@ -35,25 +60,15 @@ class Board{
       this.players[this.currentPlayer].render();
       return;
     }
-    var cardDrawn = this.drawDeck.draw();
-    cardDrawn.parent = this.players[this.currentPlayer];
-    this.players[this.currentPlayer].deck.placeInDeck(cardDrawn);
-    this.decrementActionsLeft();
-    this.players[this.currentPlayer].render();
-    if (this.actionsLeft <= 1) {
-      if (!this.players[this.currentPlayer + 1]) {
-        this.currentPlayer = 0;
-      }
-      else {
-        this.currentPlayer++;
-      }
-      this.actionsLeft = 4;
-    }
-    this.players[this.currentPlayer].render();
-    this.players[this.currentPlayer].renderMonster();
-    }
 
-  winCondition(){
+    var cardDrawn = this.drawDeck.draw();
+
+    this.players[this.currentPlayer].deck.placeInDeck(cardDrawn);
+    this.takeTurn();
+
+  }
+
+  checkWin(){
     var winner = this.players[0];
     var winnerIndex = 0;
     for(var numberOfPlayers = 1; numberOfPlayers < this.players.length; numberOfPlayers++){
@@ -109,27 +124,21 @@ class Board{
     }
 
     if (winners.length){
-      $("#indicator").removeClass("hidden").text("Players " + winners.join(" and ") + " won the battle");
-      setTimeout(function () { $("#indicator").addClass("hidden"); }, 1500);
+      this.domElements.indicator.removeClass("hidden").text("Players " + winners.join(" and ") + " won the battle");
+      setTimeout(function () { this.domElements.indicator.addClass("hidden"); }, 1500);
     }
     else {
 
-      $("#indicator").removeClass("hidden").text("Players " + losers.join(" and ") + " lost the battle");
-      setTimeout(function () { $("#indicator").addClass("hidden"); }, 1500);
+      this.domElements.indicator.removeClass("hidden").text("Players " + losers.join(" and ") + " lost the battle");
+      setTimeout(function () { this.domElements.indicator.addClass("hidden"); }, 1500);
     }
 
     this.babiesDeck.cardsArray = []
+
     $("#babyCount").text(this.babiesDeck.cardsArray.length)
-    this.actionsLeft = 0;
-    if (this.actionsLeft <= 1) {
-      if (!this.players[this.currentPlayer + 1]) {
-        this.currentPlayer = 0;
-      }
-      else {
-        this.currentPlayer++;
-      }
-      this.actionsLeft = 4;
-    }
+
+    this.takeTurn(this.maxActions);
+
     for(var i = 1; i <= this.players.length; i++){
       $('.player' + i).empty();
     }
@@ -137,8 +146,8 @@ class Board{
   }
 
   errorIndicator(text){
-    $("#errorIndicator").removeClass("hidden").text(text);
-    setTimeout(function () { $("#errorIndicator").addClass("hidden"); }, 750);
+    this.domElements.errorIndicator.removeClass("hidden").text(text);
+    setTimeout(function () { this.domElements.errorIndicator.addClass("hidden"); }, 750);
   }
 
   loadCards(images) {
