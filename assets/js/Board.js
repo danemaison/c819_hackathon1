@@ -84,8 +84,7 @@ class Board{
         winnerIndex = numberOfPlayers;
       }
 //FIX RELOAD
-=======
-    //fix reload
+
       $(".modalShadow.modal.hidden").removeClass("hidden");
       $(".modalClose").on("click", this.restartGame);
 
