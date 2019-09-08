@@ -1,5 +1,6 @@
 class Monster {
   constructor(headCard, player) {
+    console.log(headCard);
     this.head = headCard;
     this.body = null;
     this.leftArm = null;
@@ -77,7 +78,7 @@ class Monster {
 
   createMonsterDom(){
     var monsterContainer = $('<div>').addClass('monster-container');
-    var monsterPoints = $('<div>').addClass("monster-score").text("Monster Power: " + this.deck.calcPoints());
+    var monsterPoints = $('<div>').addClass("monster-score").text("Monster Power: " + this.points);
     monsterContainer.append(this.headElement);
     monsterContainer.append(this.bodyElement);
     monsterContainer.append(this.leftArmElement);
