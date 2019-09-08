@@ -34,6 +34,7 @@ class Player{
         if(monster.addToMonster(cardObj)){
           this.deck.remove(cardObj);
           this.takeTurn();
+          break;
         }
       }
       // Board.js handles calling the player render methods
