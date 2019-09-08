@@ -5,6 +5,12 @@ class Deck{
     this.cardClickCallback = cardClickCallback;
     this.parent = parent;
   }
+  getLength(){
+    return this.cardsArray.length;
+  }
+  empty(){
+    this.cardsArray = [];
+  }
   placeInDeck(cardObj){
     cardObj.setClickCallback(this.cardClickCallback);
     this.cardsArray.push(cardObj);

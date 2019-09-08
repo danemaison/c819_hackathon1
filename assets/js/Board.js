@@ -16,8 +16,14 @@ class Board{
     this.cardQueue = null;
 
     this.domElements = {
+      actionsRemaining: $("#actionsRemaining"),
+      currentPlayerScore: $("#currentPlayerScore"),
+      provoke: $("#provoke"),
+      discardPile: $("#discardPile"),
+      drawPile: $('#drawPile'),
       errorIndicator: $("#errorIndicator"),
       indicator: $("#indicator"),
+      babyCount: $("#babyCount"),
     }
 
   }
@@ -25,10 +31,10 @@ class Board{
     var drawDOM = $('<div>').addClass('draw').css("height", "100%");
     drawDOM.click(this.draw);
     var discardDOM = $("<div>").addClass("discard");
-    $('#drawPile').append(drawDOM);
-    $("#discardPile").append(discardDOM);
-    $("#provoke").on('click', this.provoke);
-    $("#actionsRemaining").text("Actions Remaining: " + this.actionsLeft);
+    this.domElements.drawPile.append(drawDOM);
+    this.domElements.discardPile.append(discardDOM);
+    this.domElements.provoke.on('click', this.provoke);
+    this.domElements.actionsRemaining.text("Actions Remaining: " + this.actionsLeft);
   }
   takeTurn(actions = 1){ // if no arguments are passed, 1 action is removed from actions left
     // decrements actions left and renders the current player
@@ -42,7 +48,7 @@ class Board{
         this.currentPlayer++;
       }
     }
-    $("#actionsRemaining").text("Actions Remaining: " + this.actionsLeft);
+    this.domElements.actionsRemaining.text("Actions Remaining: " + this.actionsLeft);
     this.players[this.currentPlayer].render();
     //add in highlight?
     for(var player of this.players){
@@ -64,7 +70,6 @@ class Board{
       return;
     }
     var cardDrawn = this.drawDeck.draw();
-
     this.players[this.currentPlayer].deck.placeInDeck(cardDrawn);
     this.takeTurn();
   }
@@ -77,7 +82,7 @@ class Board{
         winner = this.players[numberOfPlayers];
         winnerIndex = numberOfPlayers;
       }
-//fix reload
+    //fix reload
       $(".modalShadow.modal.hidden").removeClass("hidden");
       $(".modalClose").on("click", function () {
         window.location.reload();
@@ -89,8 +94,8 @@ class Board{
       return [winner, winnerIndex];
     }
   }
-
   provoke(event){
+    /* checks to see if provoke is valid */
     if (event){
       if (this.actionsLeft != 4){
         this.errorIndicator("You must provoke on your first turn");
@@ -99,7 +104,7 @@ class Board{
         return;
       }
     }
-    var babyArmyPoints = this.babiesDeck.calcPoints();
+
     if (!this.babiesDeck.cardsArray.length){
       this.errorIndicator("There are no babies to fight...");
       return;
@@ -114,42 +119,41 @@ class Board{
       setTimeout(this.resetGif, 900);
       return false;
     }
-    var winners = [];
-    var losers = [];
-    for (var player of this.players){
-      if(player.calcArmyPoints() > babyArmyPoints){
-        player.points += babyArmyPoints;
-        winners.push(player.name);
-      }
-      else{
-        losers.push(player.name)
-      }
-      player.monsterArmy = [];
-      $("#currentPlayerScore").text("Current Score: " + this.players[this.currentPlayer].points);
-    }
+    /* end check */
 
-    if (winners.length){
-      var tempDomRef = this.domElements.indicator;
-      tempDomRef.removeClass("hidden").text("Players " + winners.join(" and ") + " won the battle");
-      setTimeout(function () { tempDomRef.addClass("hidden"); }, 1800);
-    }
-    else {
-      var tempDomRef = this.domElements.indicator;
-      tempDomRef.removeClass("hidden").text("Players " + losers.join(" and ") + " lost the battle");
-      setTimeout(function () { tempDomRef.addClass("hidden"); }, 1800);
-    }
-
-    this.babiesDeck.cardsArray = []
-    $("#babyCount").text(this.babiesDeck.cardsArray.length)
-
+    this.checkProvokeOutcome();
+    this.babiesDeck.empty();
+    this.domElements.babyCount.text(this.babiesDeck.getLength());
     this.takeTurn(this.maxActions);
 
     for(var i = 1; i <= this.players.length; i++){
       $('.player' + i).empty();
     }
-    this.players[this.currentPlayer].render();
+    // this.players[this.currentPlayer].render();
   }
 
+  checkProvokeOutcome() {
+    /* check winners/losers */
+    var babyArmyPoints = this.babiesDeck.calcPoints();
+    for (var player of this.players) {
+      console.log('player points', player.calcArmyPoints());
+      console.log('Baby points', babyArmyPoints);
+      if (player.calcArmyPoints() > babyArmyPoints) {
+        console.log('player points', player.calcArmyPoints());
+        console.log('Baby points', babyArmyPoints);
+
+        player.points += babyArmyPoints;
+        player.domElements.outcome.addClass('victory').text('VICTORY!');
+        setTimeout(function () { player.domElements.outcome.removeClass("victory").text(''); }, 1500);
+      }
+      else {
+        player.domElements.outcome.addClass('defeat').text('DEFEAT!');
+        setTimeout(function () { player.domElements.outcome.removeClass("defeat").text(''); }, 1800);
+      }
+      player.monsterArmy = [];
+      this.domElements.currentPlayerScore.text("Current Score: " + this.players[this.currentPlayer].points);
+    }
+  }
   errorIndicator(text){
     var tempDomRef = this.domElements.errorIndicator;
     tempDomRef.removeClass("hidden").text(text);
