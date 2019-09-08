@@ -18,7 +18,7 @@ class Deck{
     $("#cardsRemaining").text("Cards Remaining: " + this.numCards());
     if (lastCard.type === "baby"){
       $("#indicator").removeClass("hidden").text("Baby Army Size + 1");
-      setTimeout(function () {$("#indicator").addClass("hidden");}, 300);
+      setTimeout(function () {$("#indicator").addClass("hidden");}, 900);
       this.parent.babiesDeck.placeInDeck(lastCard);
       // in this deck find the number of cards in the cardsArray have type baby
       var babiesLeft = this.countInDeck("baby");
