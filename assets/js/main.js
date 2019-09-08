@@ -8,3 +8,13 @@ function initializeApp(){
   gameBoard.generateDom();
   gameBoard.players[0].render();
 }
+
+function restartGame() {
+  this.restartGame = this.restartGame.bind(this);
+  var newgameBoard = new NewBoard();
+  newgameBoard.loadCards(cardImages);
+  newgameBoard.drawDeck.shuffle()
+  newgameBoard.initializePlayerDecks();
+  newgameBoard.generateDom();
+  newgameBoard.players[0].render();
+}

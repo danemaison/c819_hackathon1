@@ -1,8 +1,9 @@
 class Board{
-  constructor(){
+  constructor(restartGame){
     this.draw = this.draw.bind(this);
     this.provoke = this.provoke.bind(this);
     this.takeTurn = this.takeTurn.bind(this);
+    this.restartGame = restartGame;
 
     this.drawDeck = new Deck(this);
     this.discardDeck = new Deck(this);
@@ -82,11 +83,11 @@ class Board{
         winner = this.players[numberOfPlayers];
         winnerIndex = numberOfPlayers;
       }
+//FIX RELOAD
+=======
     //fix reload
       $(".modalShadow.modal.hidden").removeClass("hidden");
-      $(".modalClose").on("click", function () {
-        window.location.reload();
-      });
+      $(".modalClose").on("click", this.restartGame);
 
       $('#winner').text('Player ' + winner.name + ' won!');
       $('.modalShadow.modal.hidden').removeClass('hidden');
@@ -115,8 +116,6 @@ class Board{
     }
     if (!armyCount){
       this.errorIndicator("The babies found no one to fight");
-      $(".baby.hidden").removeClass("hidden")
-      setTimeout(this.resetGif, 900);
       return false;
     }
     /* end check */
