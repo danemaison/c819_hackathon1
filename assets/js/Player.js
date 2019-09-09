@@ -1,43 +1,65 @@
 class Player{
-  constructor(parent, name){
-    this.deck = new Deck(this);
-    this.army = [];
-    this.points = 0;
-    this.parent = parent;
+  constructor(name, takeTurn){
+    this.handleCardInHandClick = this.handleCardInHandClick.bind(this);
     this.name = name;
+    this.deck = new Deck(this, this.handleCardInHandClick);
+    this.monsterArmy = [];
+    this.points = 0;
+    this.takeTurn = takeTurn; //callback passed from board
+
+    this.domElements = {
+      turn: $('#currentPlayer'),
+      score: $('#currentPlayerScore'),
+      hand: $('#playerHand'),
+      // monsterContainer: $('.' + this.name.match(/[a-zA-Z]+|[0-9]+/g)[0] + "-" + this.name.match(/[a-zA-Z]+|[0-9]+/g)[1]),
+      outcome: $('.outcome'),
+      monsters: $('.' + this.name),
+    }
+
   }
   addMonster(monsterObj){
-    this.army.push(monsterObj);
+    this.monsterArmy.push(monsterObj);
   }
+  handleCardInHandClick(cardObj){
+    if(cardObj.type === 'head'){
+      // add Monster to players monsters
+      this.addMonster(new Monster(cardObj, this));
+      this.deck.remove(cardObj);
+      this.takeTurn();
+    }
+    else {
+      for(var monster of this.monsterArmy){
+        if(monster.addToMonster(cardObj)){
+          this.deck.remove(cardObj);
+          this.takeTurn();
+          break;
+        }
+      }
+      // Board.js handles calling the player render methods
+    }
+  }
+
   render(){
     // Renders the player's hand and score on the DOM
-    $('#currentPlayer').text('Player ' + (this.parent.currentPlayer + 1) + '\'s turn');
-    $('#currentPlayerScore').text('Current Score: ' + this.points);
-    $('#playerHand').empty();
+    this.domElements.turn.text(this.name + '\'s turn');
+    this.domElements.score.text('Current Score: ' + this.points);
+    this.domElements.hand.empty();
     for(var i = 0; i < this.deck.cardsArray.length; i++){
-      $('#playerHand').append(this.deck.cardsArray[i].createDomElement());
+      this.domElements.hand.append(this.deck.cardsArray[i].createDomElement());
     }
   }
-  renderMonster(){
+  renderMonsters(){
     // Renders each of the player's monsters on the DOM
-    $('.player' + (this.parent.currentPlayer + 1)).empty();
-    for(var i = 0; i < this.army.length; i++){
-      var monsterContainer = $('<div>').addClass('monster-container');
-      var monsterPoints = $('<div>').addClass("monster-score").text("Monster Power: " + this.army[i].deck.calcPoints());
-      monsterContainer.append(this.army[i].headElement);
-      monsterContainer.append(this.army[i].bodyElement);
-      monsterContainer.append(this.army[i].leftArmElement);
-      monsterContainer.append(this.army[i].rightArmElement);
-      monsterContainer.append(this.army[i].legsElement);
-      monsterContainer.append(monsterPoints);
-      $('.player' + (this.parent.currentPlayer+1) ).append(monsterContainer);
+    this.domElements.monsters.empty();
+    for(var i = 0; i < this.monsterArmy.length; i++){
+      var monsterContainer = this.monsterArmy[i].createMonsterDom();
+      this.domElements.monsters.append(monsterContainer);
     }
-    $(".row.player-titles > h3:nth-child(1)").text("Player One's Army: " + this.parent.players[0].calcArmyPoints());
-    $(".row.player-titles > h3:nth-child(2)").text("Player Two's Army: " + this.parent.players[1].calcArmyPoints());
   }
+
   calcArmyPoints(){
     var tempPoints = 0;
-    for (var monster of this.army){
+    for (var monster of this.monsterArmy){
       tempPoints += monster.deck.calcPoints();
     }
     return tempPoints;
