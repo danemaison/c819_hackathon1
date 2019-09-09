@@ -11,7 +11,7 @@ class Player{
       turn: $('#currentPlayer'),
       score: $('#currentPlayerScore'),
       hand: $('#playerHand'),
-      // mosterContainer: $('.' + this.name.match(/[a-zA-Z]+|[0-9]+/g)[0] + "-" + this.name.match(/[a-zA-Z]+|[0-9]+/g)[1]),
+      // monsterContainer: $('.' + this.name.match(/[a-zA-Z]+|[0-9]+/g)[0] + "-" + this.name.match(/[a-zA-Z]+|[0-9]+/g)[1]),
       outcome: $('.outcome'),
       monsters: $('.' + this.name),
     }
