@@ -25,8 +25,19 @@ class Board{
       indicator: $("#indicator"),
       babyCount: $("#babyCount"),
     }
-
   }
+
+  startGame() {
+    $(".modalStart.start.hidden").removeClass("hidden");
+    var startButton = $('<button>').addClass("startButton").text("PLAY");
+    $(".modalStartBody").append(startButton);
+    $(".startButton").on("click", this.clickHandler);
+  }
+
+  clickHandler(event) {
+    $(".modalStart ").css("display", "none");
+  }
+
   generateDom(){
     var drawDOM = $('<div>').addClass('draw').css("height", "100%");
     drawDOM.click(this.draw);
@@ -36,6 +47,7 @@ class Board{
     this.domElements.provoke.on('click', this.provoke);
     this.domElements.actionsRemaining.text("Actions Remaining: " + this.actionsLeft);
   }
+
   takeTurn(actions = 1){ // if no arguments are passed, 1 action is removed from actions left
     // decrements actions left and renders the current player
     this.actionsLeft -= actions;

@@ -12,6 +12,45 @@ body{
 *{
   box-sizing: border-box;
 }
+.modalStart{
+  z-index: 9999;
+  background-color: rgba(0,0,0,.4);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+}
+.modalStartBody{
+  background-color: white;
+  height: 50vh;
+  width: 50vw;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+}
+.modalStartContent{
+  text-align: center;
+  margin-top: 15%;
+}
+.startButton{
+  background-color: white;
+  border: 2px solid transparent;
+  border-image: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+  border-image-slice: 1;
+  font-size: 15px;
+  height: 50px;
+  width: 30%;
+  justify-content: center;
+  margin: auto;
+  margin-top: 3%;
+  display: flex;
+}
+.start.hidden{
+  display: none;
+}
 .modalShadow {
   z-index: 9999;
   background-color: rgba(0,0,0,.4);
@@ -52,7 +91,7 @@ body{
   font-size: 15px;
   height: 50px;
   margin: auto;
- margin-top: 140px;
+  margin-top: 140px;
 }
 .modal.hidden{
   display: none;
