@@ -35,7 +35,7 @@ class Board{
   }
 
   clickHandler(event) {
-    $(".modalStart ").css("display", "none");
+    $(".modalStart ").addClass("hidden");
   }
 
   generateDom(){
@@ -111,7 +111,7 @@ class Board{
         window.location.reload();
       });
 
-      $('#winner').text('Player ' + winner.name + ' won!');
+      $('#winner').text(winner.name + ' won!');
       $('.modalShadow.modal.hidden').removeClass('hidden');
 
       return [winner, winnerIndex];
