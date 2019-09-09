@@ -35,7 +35,7 @@ class Board{
   }
 
   clickHandler(event) {
-    $(".modalStart ").addClass("hidden");
+    $(".modalStart").addClass("hidden");
   }
 
   generateDom(){
